@@ -1,7 +1,83 @@
+:root{
+  /* // Born to Dare */
+  --Primary-Brown: #80491E;
+  --Primary-Dare-Orange: #F15822;
+  --Secondary-Jeruk-Orange: #F36E26;
+  --Tertiary-Elegance-System: #C9B9AC;
+  --Background-Beige: #FFE4C8;
+  
+  /* // Educational Fare */
+  --Primary-Navy: #24275C;
+  --Primary-Sky-Blue: #1C9ED9;
+  --Secondary-Grey-Blue: #869AAC;
+  --Tertiary-Timeless-System: #D4D2CB;
+  --Background-Paper: #F8F3EA;
+
+}
+/* /Define Main Variables/ */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
     Arial, sans-serif;
+  background-color: var(--Background-Beige);
+}
+
+image{
+  display: block; /* Ensures the image is treated as a block element */
+  margin: auto; 
+}
+
+h1{
+  font-size: 34px;
+}
+
+/* /Define Containers/ */
+.container{  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* /Login Screen/ */
+.login-popup{
+  width: 500px;
+  height: 400px;
   margin: auto;
-  max-width: 38rem;
-  padding: 2rem;
+  border-radius: 5px;
+}
+.login-contents{
+  padding: 40px;
+  text-align: center;
+}
+h1.dare{
+  color: var(--Primary-Brown);
+  text-align: center;
+}
+
+button {
+  background-color: var(--Background-Paper);
+  height: 50px;
+  width: 180px;
+  color: var(--Primary-Navy);
+  border-radius: 30px;
+  border-color: var(--Primary-Sky-Blue);
+  font-weight: bold;
+  font-size: 15px;
+  text-align: center; /* Center text horizontally */
+}
+
+.button-content {
+  display: flex; /* Use flexbox for button content */
+  align-items: center; /* Align items vertically */
+  justify-content: center; /* Align items horizontally */
+}
+
+button img {
+  margin-left: 5px; /* Add some space between text and image */
+  height: 20px;
 }
