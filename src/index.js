@@ -1,7 +1,6 @@
 const { app, BrowserWindow, ipcMain} = require('electron');
 const path = require('node:path');
 const fs = require('fs');
-
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
   app.quit();
@@ -47,7 +46,7 @@ const createWindow = () => {
     },
   });
 
-  let startUrl = logged_in ? 'index.html': 'login.html';
+  let startUrl = logged_in ? 'index.html': './pages/0-login.html';
 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, startUrl));
@@ -80,5 +79,3 @@ app.on('window-all-closed', () => {
   }
 });
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and import them here.

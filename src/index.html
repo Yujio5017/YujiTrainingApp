@@ -4,26 +4,27 @@
     <meta charset="UTF-8" />
     <title>Yuji Nojima Program</title>
     <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/ntn5tjm.css">
   </head>
   <body>
-    <!-- Navigation Bar Draggable -->
-    <div class="navbar" id="customTitleBar">
-      <div class="container">
-        <!-- Add your custom navigation elements here -->
-      </div>
+  <!-- Navigation Bar Draggable -->
+  <div class="navbar" id="customTitleBar">
+    <div class="container">
+      <!-- Add your custom navigation elements here -->
     </div>
-    <!-- Loading Bar -->
-    <div class="ipl-progress-indicator" id="ipl-progress-indicator">
-      <div class="ipl-progress-indicator-head">
-        <div class="first-indicator"></div>
-        <div class="second-indicator"></div>
-      </div>
-      <div class="insp-logo-frame">
-        <div class="insp-logo-frame-img">
-          <img src="../assets/images/yujilogo.png" width="100%"alt="logo">
-      </div>
-      </div>
+  </div>
+  <!-- Loading Bar -->
+  <div class="ipl-progress-indicator" id="ipl-progress-indicator">
+    <div class="ipl-progress-indicator-head">
+      <div class="first-indicator"></div>
+      <div class="second-indicator"></div>
     </div>
+    <div class="insp-logo-frame">
+      <div class="insp-logo-frame-img">
+        <img src="../assets/images/yujilogo.png" width="100%"alt="logo">
+    </div>
+    </div>
+  </div>
 
      <!-- Main container -->
      <div class="container" id="main-container">
@@ -35,8 +36,8 @@
           Your browser does not support the video tag.
         </video>
       </div>
-
-      <h1>Hinge</h1>
+      <div class="round-div lifestyle" onclick="goToPage('./pages/1-lifestyle.html')"><h1>LIFESTYLE</h1></div>
+      <div class="round-div workout" onclick="goToPage('./pages/2-workout.html')"><h1>WORKOUT</h1></div>
     </div>
 
 
@@ -46,7 +47,12 @@
       const videoContainer = document.getElementById('video-container');
       const video = document.getElementById('main-video');
       const mainContainer = document.getElementById('main-container');
-
+      function goToPage(page) {
+            // Navigate to the specified page
+            window.location.href = page;
+        }
+        // REMOVE
+        // videoContainer.remove();
   // Pause the video to ensure it doesn't continue playing after removal
   video.pause();
       if (ele) {
@@ -63,8 +69,13 @@
             });
             // Play the video
             video.play();
+        
+
+            //REMVOE
         }, 2500); // Remove the loading screen after 2 seconds
+        // }, 100); // Remove the loading screen after 2 seconds
       }
     </script>
+    <!-- <script src="./renderer.js"></script> -->
   </body>
 </html>
