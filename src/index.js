@@ -1,14 +1,44 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain} = require('electron');
 const path = require('node:path');
+const fs = require('fs');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
   app.quit();
 }
+// Handle Loggin
+
+// Get the directory where your main script (index.js or main.js) is located
+const appDirectory = __dirname;
+
+// Path to userData.json in the same directory as the main script
+const userDataPath = path.join(appDirectory, 'userData.json');
+
+// Function to read user data from userData.json
+function readUserData() {
+    try {
+        const userData = JSON.parse(fs.readFileSync(userDataPath, 'utf-8'));
+        return userData;
+    } catch (error) {
+        console.error('Error reading user data:', error);
+        return null;
+    }
+}
+
+// Example usage:
+const userData = readUserData();
+const logged_in = userData ? userData.logged_in : false;
+
 
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
+    titleBarStyle: 'hidden',
+    titleBarOverlay: {
+      color: '#F15822',
+      symbolColor: '#FFE4C8',
+      height: 40
+    },
     width: 1620,
     height: 900,
     webPreferences: {
@@ -17,8 +47,10 @@ const createWindow = () => {
     },
   });
 
+  let startUrl = logged_in ? 'index.html': 'login.html';
+
   // and load the index.html of the app.
-  mainWindow.loadFile(path.join(__dirname, 'index.html'));
+  mainWindow.loadFile(path.join(__dirname, startUrl));
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
