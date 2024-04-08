@@ -6,18 +6,65 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
+    <!-- Navigation Bar Draggable -->
     <div class="navbar" id="customTitleBar">
       <div class="container">
         <!-- Add your custom navigation elements here -->
       </div>
     </div>
-    <div class="container">
-      <div class="login-popup">
-        <div class="login-contents">
-          <img src="../assets/images/yujilogo.png" height="40px"/>
-          <h1 class="dare">Dashboard<br/> Free on Spotify.</h1>
-        </div>
+    <!-- Loading Bar -->
+    <div class="ipl-progress-indicator" id="ipl-progress-indicator">
+      <div class="ipl-progress-indicator-head">
+        <div class="first-indicator"></div>
+        <div class="second-indicator"></div>
+      </div>
+      <div class="insp-logo-frame">
+        <div class="insp-logo-frame-img">
+          <img src="../assets/images/yujilogo.png" width="100%"alt="logo">
+      </div>
       </div>
     </div>
+
+     <!-- Main container -->
+     <div class="container" id="main-container">
+
+      <!-- Animation Container -->
+      <div class="video-container" id="video-container">
+        <video id="main-video" autoplay>
+          <source src="../assets/videos/Splash.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      <h1>Hinge</h1>
+    </div>
+
+
+    <!-- Scripts -->
+    <script>
+      const ele = document.getElementById('ipl-progress-indicator');
+      const videoContainer = document.getElementById('video-container');
+      const video = document.getElementById('main-video');
+      const mainContainer = document.getElementById('main-container');
+
+  // Pause the video to ensure it doesn't continue playing after removal
+  video.pause();
+      if (ele) {
+        // Set a timeout to remove the loading screen after 2 seconds
+        setTimeout(() => {
+          // Remove the loading screen from the DOM
+          ele.remove();
+          // Set a timeout to play the video after 1 second
+            // Listen for the 'ended' event on the video element
+            video.addEventListener('ended', () => {
+              // Remove the video element from the DOM after it has finished playing once
+              videoContainer.remove();
+              mainContainer.classList.add('dashboard');
+            });
+            // Play the video
+            video.play();
+        }, 2500); // Remove the loading screen after 2 seconds
+      }
+    </script>
   </body>
 </html>

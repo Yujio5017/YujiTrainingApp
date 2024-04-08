@@ -1,7 +1,8 @@
 {
   "name": "yujiapp",
-  "productName": "yujiapp",
+  "productName": "Yuji Nojima",
   "version": "1.0.0",
+  "icon":"./assets/favicon.ico",
   "description": "My Electron application description",
   "main": "src/index.js",
   "scripts": {

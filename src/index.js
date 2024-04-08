@@ -40,7 +40,7 @@ const createWindow = () => {
       height: 40
     },
     width: 1620,
-    height: 900,
+    height: 911,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration:true,
@@ -53,7 +53,7 @@ const createWindow = () => {
   mainWindow.loadFile(path.join(__dirname, startUrl));
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 };
 
 // This method will be called when Electron has finished
