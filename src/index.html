@@ -1,129 +1,194 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Yuji Nojima Program</title>
-    <link rel="stylesheet" href="index.css" />
-    <link rel="stylesheet" href="https://use.typekit.net/ntn5tjm.css">
-    <link rel="stylesheet" href="https://fonts.adobe.com/fonts/fraunces-variable">
-  </head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid Layout</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="grid-container">
+    <!-- Logo -->
+    <div class="grid-items logo"><IMG src="./assets/images/yujilogo.png" width="100%"></div>
+    
+    <!-- Quote -->
+    <div class="grid-items quote">Quote</div>
 
-  <body>
-  <!-- Navigation Bar Draggable -->
-  <div class="navbar" id="customTitleBar">
-    <div class="container">
-      <!-- Add your custom navigation elements here -->
+    <!-- Calendar -->
+    <div class="grid-items calendar">Calendar</div>
+
+    <!-- Title -->
+    <div class="title-grid">
+      <span>--&nbsp;</span>
+      <div class="title selected">RESUME CAMPAIGN</div>
+      <span>&nbsp;--</span>
+    </div>
+
+    <!-- Description -->
+    <div class="grid-items description">Description for RESUME CAMPAIGN</div>
+
+    <!-- Side menu -->
+    <div class="grid-items side-menu">
+      <ul>
+        <li>OPTIONS</li>
+        <li>CAREER PROFILE</li>
+        <li>CHALLENGES</li>
+        <li>PROGRESSION</li>
+      </ul>
+    </div>
+
+    <!-- Arrow Keys Model -->
+    <div class="grid-items arrow-keys-model">
+      <div class="key-row">
+        <div class="key" id="keyQ">Q</div>
+        <div class="key" id="keyW">W</div>
+        <div class="key" id="keyE">E</div>
+      </div>
+      <div class="key-row">
+        <div class="key" id="keyA">A</div>
+        <div class="key" id="keyS">S</div>
+        <div class="key" id="keyD">D</div>
+      </div>
+      <p>USE YOUR ARROW KEYS!</p>
+    </div>
+
+    <!-- Main menu -->
+    <div class="grid-items main-menu">
+      <ul>
+        <li>NEW DAY</li>
+        <li class="highlighted">RESUME CAMPAIGN</li>
+        <li>REVIEW DAY</li>
+        <li>ROUTINE EDITOR</li>
+        <li>WORKOUT TRACKER</li>
+      </ul>
     </div>
   </div>
-  <!-- Loading Bar -->
-  <div class="ipl-progress-indicator" id="ipl-progress-indicator">
-    <div class="ipl-progress-indicator-head">
-      <div class="first-indicator"></div>
-      <div class="second-indicator"></div>
-    </div>
-    <div class="insp-logo-frame">
-      <div class="insp-logo-frame-img">
-        <img src="../assets/images/yujilogo.png" width="100%"alt="logo">
-    </div>
-    </div>
-  </div>
-
-     <!-- Main container -->
-     <div class="container" id="main-container">
-
-      <!-- Animation Container -->
-      <div class="video-container" id="video-container">
-        <video id="main-video" autoplay>
-          <source src="../assets/videos/Splash.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-
-      <div class="left-nav">
-        <ul class="menu-items">
-          <li>a</li>
-          <li>b</li>
-          <li>c</li>
-        </ul>
-      </div>
-      <div class="backdrop">
-        <div class="root content">
-          <div class="content-child time-capsule">
-            <h3 id="date" class="date"></h3>
-            <!-- <div class="progress-bar2">
-              <div class="progress2"></div>
-            </div> -->
-            <div id="time" class="time"></div>
-          </div>
-          <div class="content-child logo-progress">
+  <script>
+    document.addEventListener('keydown', function(event) {
+      const key = event.key.toUpperCase();
+      const quoteElement = document.querySelector('.quote');
 
 
-            <!-- <input type="number" id="percentInput" min="0" max="100" value="0"> -->
-            <!-- <button onclick="updateProgress()">Update Progress</button> -->
-          </div>
-          <div class="content-child blog">
-            <h3>Blog</h3>
-          </div>
-          <div class="content-child to-do">
-            <h3>Projects</h3>
-            <div class="todo-container2">
-              <div class="todo-list2" id="todo-list2">
-                <!-- To-do items will be appended here -->
-              </div>
-              <input type="text" id="todo-input2" placeholder="Add a new to-do...">
-              <input type="date" id="complete-by-input2" placeholder="Complete by (optional)">
-          
-            </div>
-          </div>
-          <div class="content-child edu">
-            <h3>BOOK REC  </h3>
-            <p>48 Laws of Power<br/> 30 pages</p>
-          </div>
-          <div class="content-child gym">
-            <h3>GYM DAY</h3>
-            <p>Chest and Shoulders <br/> 40 mins</p>
-          </div>
-          <div class="content-child stats">
-            <h3>STATS</h3>
-          </div>
-          <div class="content-child journal">
-            <h3>JOURNAL</h3>
-          </div>
-          <div class="content-child current-task">
-            <h3>TIMELINE</h3>
-          </div>
-          <div class="content-child today">
 
-            <img src="../assets/images/yujilogo.png" width="100%"/>
-            <div class="todo-container">
-              <div class="todo-list" id="todo-list">
-                <!-- To-do items will be appended here -->
-              </div>
-              <input type="text" id="todo-input" placeholder="Add a new to-do...">
-              <input type="time" id="complete-by-input" placeholder="Complete by (optional)">
-          
-            </div>
-            <h3>DAY PROGRESS 20/36</h3>
-            <div class="progress-bar">
-              <div class="progress"></div>
-            </div>
-          </div>
+      // Make a click
+        
+      // Generate a random number between 1 and 4
+      const randomNumber = Math.floor(Math.random() * 4) + 1;
+
+      // Construct the filename based on the random number
+      const clickSoundFilename = `./assets/audio/click${randomNumber}.wav`;
+
+      // Create an audio element and set its source to the randomly chosen file
+      const clickSound = new Audio(clickSoundFilename);
+
+      // Play the clicking sound effect
+      clickSound.play();
+      // Only highlight W, A, S, D keys
+      if (key === 'W' || key === 'A' || key === 'S' || key === 'D' || key === 'E'|| key === 'Q') {
+        document.getElementById(`key${key}`).classList.add('highlighted');
+          // Change quote
+          getQuotes().then((quote) => {
+            quoteElement.textContent = `${quote.text} - ${quote.author}`;
+          }).catch((error) => {
+            console.error('Error fetching quote:', error);
+          });
+      } 
+
+      if (key === 'ARROWUP') {
+        document.getElementById(`keyW`).classList.add('highlighted');
+      }
+      if (key === 'ARROWLEFT'){
+        document.getElementById(`keyA`).classList.add('highlighted');
+      }
+      if (key === 'ARROWDOWN') {
+        document.getElementById(`keyS`).classList.add('highlighted');
+      }
+      if (key === 'ARROWRIGHT'){
+        document.getElementById(`keyD`).classList.add('highlighted');
+      }
+      // Remove highlight from all menu items
+      document.querySelectorAll('.main-menu li').forEach(item => {
+        item.classList.remove('highlighted');
+      });
+      // Update title and description based on the pressed key
+      updateTitleAndDescription(key);
+      const mainMenuItems = document.querySelectorAll('.main-menu li');
+      const selectedIndex = Array.from(mainMenuItems).findIndex(item => item.textContent === document.querySelector('.title.selected').textContent);
+      mainMenuItems[selectedIndex].classList.add('highlighted');
+    });
+
+    document.addEventListener('keyup', function(event) {
+      const key = event.key.toUpperCase();
+
+      // Only remove highlight for W, A, S, D keys
+      if (key === 'W' || key === 'A' || key === 'S' || key === 'D'|| key === 'E' || key === 'Q') {
+        document.getElementById(`key${key}`).classList.remove('highlighted');
+      }
+      if (key === 'ARROWUP') {
+        document.getElementById(`keyW`).classList.remove('highlighted');
+      }
+      if (key === 'ARROWLEFT'){
+        document.getElementById(`keyA`).classList.remove('highlighted');
+      }
+      if (key === 'ARROWDOWN') {
+        document.getElementById(`keyS`).classList.remove('highlighted');
+      }
+      if (key === 'ARROWRIGHT'){
+        document.getElementById(`keyD`).classList.remove('highlighted');
+      }
+
+    });
+
+    function updateTitleAndDescription(key) {
+      const titleElement = document.querySelector('.title.selected');
+      const descriptionElement = document.querySelector('.description');
+
+      const mainMenuItems = ['NEW DAY','RESUME CAMPAIGN', 'REVIEW DAY', 'ROUTINE EDITOR', 'WORKOUT TRACKER'];
+      const descriptionItems = ['Start off your brand new day by timeboxing','Resume your day from where you last started',  'Must have been a great day, lets review your day', 'Here is your curated list of routines, lets edit, add or create your routines', 'Lets see your upcoming workout, chang eworkout plans or look to level up your game'];
+      const hmtlRef = ["new","dashboard","review","routine","workout"]
+      let selectedIndex = mainMenuItems.indexOf(titleElement.textContent);
+      
+      switch (key) {
+        case 'ENTER':
+          window.location.href = `./pages/${hmtlRef[selectedIndex]}.html`;
+        case 'W':
+        case 'A':
+        case 'ARROWUP':
+        case 'ARROWLEFT':
+          selectedIndex = Math.max(selectedIndex - 1, 0);
+          break;
+        case 'S':
+        case 'D':
+        case 'ARROWDOWN':
+        case 'ARROWRIGHT':
+          selectedIndex = Math.min(selectedIndex + 1, mainMenuItems.length - 1);
+          break;
+        default:
+          return; // No change for other keys
+      }
+
+      titleElement.textContent =mainMenuItems[selectedIndex];
+      descriptionElement.textContent = descriptionItems[selectedIndex];
+    }
+
+    function getQuotes() {
+  return fetch("https://type.fit/api/quotes")
+    .then(function (response) {
+      return response.json();
+    })
+    .then((data) => {
+      return data[Math.floor(Math.random() * data.length)];
+    });
+}
+const quoteElement = document.querySelector('.quote');
+
+getQuotes().then((quote) => {
+  quoteElement.textContent = `${quote.text} - ${quote.author}`;
+}).catch((error) => {
+  console.error('Error fetching quote:', error);
+});
 
 
-        </div>
-      </div>
-
-      </div>
-    </div>
-  <!-- Scripts -->
-  <script src="./scripts/progressBar.js"></script>
-  <script src="./scripts/navigation.js"></script>
-  <script src="./scripts/dateTime.js"></script>
-  <script src="./scripts/toDoList.js"></script>
-  <script src="./scripts/Projects.js"></script>
-
-    <!-- Scripts -->
-
-    <!-- <script src="./renderer.js"></script> -->
-  </body>
+  </script>
+</body>
 </html>

@@ -18,8 +18,24 @@
         <div class="login-contents">
           <img src=".../assets/images/yujilogo.png" height="40px"/>
           <h1 class="dare">LifeStyle<br/> Free on Spotify.</h1>
-        </div>
+        </div>        <button id="myButton">Back</button>
       </div>
     </div>
+    <script>
+      document.getElementById("myButton").addEventListener("click", function() {
+      // Redirect to a new page when the button is clicked
+      window.location.href = "../index.html";
+      document.addEventListener('keydown', function(event) {
+      const key = event.key.toUpperCase();
+      switch (key) {
+        case '\\':
+          window.location.href = `../index.html`;
+          break;
+        default:
+          return; // No change for other keys
+      }
+    })
+  });
+    </script>
   </body>
 </html>

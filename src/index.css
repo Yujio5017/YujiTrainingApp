@@ -1,475 +1,156 @@
-:root{
-  /* // Born to Dare */
-  --Primary-Brown: #80491E;
-  --Primary-Dare-Orange: #F15822;
-  --Secondary-Jeruk-Orange: #F36E26;
-  --Tertiary-Elegance-System: #C9B9AC;
-  --Background-Beige: #FFE4C8;
-  
-  /* // Educational Fare */
-  --Primary-Navy: #24275C;
-  --Primary-Sky-Blue: #1C9ED9;
-  --Secondary-Grey-Blue: #869AAC;
-  --Tertiary-Timeless-System: #D4D2CB;
-  --Background-Paper: #F8F3EA;
-
-  --load: #F15822;
-  --notload:  #FFE4C8;
-  --backdropload: #FFE4C8;
-}
-/* /Define Main Variables/ */
-html, body {
-  height: 100%;
-  margin: 0;
-  overflow-y: hidden;
-}
-
-body {
-  font-family: pragmatica, sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  background-color: var(--Background-Beige);
-}
-
-/* Navigation Bar Styles */
-.navbar {
-  height: 40px; /* Set height */
-  width: 100%; /* Occupy full width */
-  position: fixed; /* Fix the navbar at the top */
-  top: 0; /* Align at the top */
-  left: 0; /* Align at the left */
-  z-index: 1000; /* Set a high z-index to ensure it's above other content */
-  -webkit-app-region: drag; /* Make the navbar draggable */
-}
-
-image{
-  display: block; /* Ensures the image is treated as a block element */
-  margin: auto; 
-}
-
-h1{
-  font-size: 34px;
-}
-
-/* /Define Containers/ */
-.container{  
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-/* /Login Screen/ */
-.login-popup{
-  width: 500px;
-  height: 400px;
-  margin: auto;
-  border-radius: 5px;
-}
-.login-contents{
-  padding: 40px;
-  text-align: center;
-}
-h1.dare{
-  color: var(--Primary-Brown);
-  text-align: center;
-}
-
-/* button {
-  background-color: var(--Background-Paper);
-  height: 50px;
-  width: 180px;
-  color: var(--Primary-Navy);
-  border-radius: 30px;
-  border-color: var(--Primary-Sky-Blue);
-  font-weight: bold;
-  font-size: 15px;
-  text-align: center; /* Center text horizontally */
-/* } */
-ul {
-  list-style-type: none;
-  margin: none;
-  padding: 0;
-  margin: 0;
+html{
+  overflow: hidden;
 }
 li{
-  text-decoration: none;
+  list-style: none;
 }
-
-.button-content {
-  display: flex; /* Use flexbox for button content */
-  align-items: center; /* Align items vertically */
-  justify-content: center; /* Align items horizontally */
-}
-
-button img {
-  margin-left: 5px; /* Add some space between text and image */
-  height: 20px;
-}
-
-.container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.dashboard{
-  background-color: var(--Background-Paper);
-}
-
-:root{
-  --nav-bar:var(--Tertiary-Timeless-System);
-  --nav-bar-size:5%;
-
-}
-/* /Navigation Bar Styles/ */
-.left-nav {
-  height: 100%;
-  width: var(--nav-bar-size); /* Occupy 20% of the width */
-  position: fixed; /* Fix the navbar at the top */
-  top: 0; /* Align at the top */
-  left: 0; /* Align at the left */
-  z-index: 2; /* Ensure the navbar is on top */
-  background-color: var(--nav-bar);
-  text-decoration: none;
-  text-align: center;
-  padding-top: 50px;
-}
-
-ul.parent li{
-  padding-top: 20px;
-}
-
-
-.backdrop{
-  /* padding-top: 40px; */
-  width: 95%; /* Occupy 80% of the width */
-  height: 100%;
-  position: fixed; /* Position the content absolutely */
-  top: 0; /* Align at the top */
-  left: var(--nav-bar-size); /* Align at 20% from the left */
-  background-color: var(--nav-bar);
-}
-
-/* /Main Content Styles/ */
-.content {
-  height: 100%;
-  width: 100%;
-  /* border-radius: 10px; */
-  background-color: var(--Background-Paper);
-  z-index: 1; /* Ensure the content is behind the navbar */
+.grid-container {
   display: grid;
-  grid-template-columns: 25% 25% 25% 12.5% 12.5%;
-  grid-template-rows: 25% 37.5% 37.5%;
-  grid-template-areas: 
-    "time today current-task stats stats"
-    "to-do today current-task journal gym"
-    "edu today current-task blog blog"
+  grid-template-columns: repeat(13, 1fr);
+  grid-template-rows:   repeat(9, 1fr);  /* Set all rows to auto height */
+  width: 90%;
+  height: 911px;
+  margin: 0 5%;
+  /* cursor: all-scroll; */
+}
+.logo {
+  grid-column: 1 / span 4;
+  grid-row: 1;
+  align-self: end; /* Align item to the bottom */
+  justify-self: start; /* Align item to the left */
 }
 
+.quote {
+  grid-column: 6 / span 5;
+  grid-row: 2;
+  transform: rotate(-4deg);
+}
 
-.content-child{
-  border: 2px solid var(--Tertiary-Elegance-System);
-  padding: 20px;
-  padding-top: 30px;
+.calendar {
+  grid-column: 2 / span 2;
+  grid-row: 4 / span 2;
+}
+
+.title-grid {
+  grid-column: 9 / span 3;
+  grid-row: 3;
+}
+
+.description {
+  grid-column: 9 / span 3;
+  grid-row: 4 / span 2;
+}
+
+.side-menu {
+  grid-column: 1;
+  grid-row: 8 / span 2;
+}
+
+.arrow-keys-model {
+  grid-column: 11 / span 2;
+  grid-row: 7 / span 2;
+  transform: rotate(-4deg);
+}
+
+.main-menu {
+  grid-column: 5 / span 3;
+  grid-row: 4 / span 3;
+}
+.highlighted {
+  background-color: #ff7f0e; /* Change to your desired color */
+  color: white; /* Change to your desired text color */
+}
+
+@font-face {
+  font-family: 'Big Noodle Titling';
+  src: url('./fonts/big_noodle_titling.ttf') format('opentype'),
+       url('./fonts/big_noodle_titling_oblique.ttf') format('opentype');
+  font-weight: normal;
+  font-style: oblique;
+}
+
+@font-face {
+  font-family: 'Config Condensed Medium';
+  src: url('./fonts/ConfigCondensedMedium.otf') format('opentype'),
+       url('./fonts/ConfigCondensedMediumItalic.otf') format('opentype');
+  font-weight: normal;
+}
+
+/* Font styles */
+.title, .side-menu li,.description,.arrow-keys-model,.quote {
+  font-family: 'Config Condensed Medium', sans-serif;
+}
+.main-menu li{
+  cursor: pointer;
+
+}
+.title.selected, .main-menu {
+  font-family: 'Big Noodle Titling', sans-serif; /* BigNoodleTitling OBLIQUE font */
+  font-size: 30px;
+}
+.quote{
+  font-size: 25px;
+}
+.title-grid{
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  justify-content: center;
+  align-self: end; /* Align item to the bottom */
+  font-size: 30px;
+
+}
+
+/* Text alignment */
+.side-menu, .main-menu {
+  text-align: left;
+}
+
+/* Center menu items alignment */
+.main-menu {
+  display: flex;
+  justify-content: center;
   font-size: 30px;
 }
 
-.content-child.time-capsule{
-  justify-content: flex-end; /* Align items to the bottom */
-}
-.content-child.logo-progress{
-  justify-content: flex-end; /* Align items to the bottom */
-}
-
-.content-child h3{
-  margin: 0px;
-  padding: 0px;
-  font-size: 25px;
+/* Highlighted menu item */
+.main-menu .selected {
+  background-color: #ff7f0e; /* Bright orange */
+  color: white;
 }
 
-.time-capsule{
-  grid-area: time;
-  border: 2px solid var(--Primary-Sky-Blue);
+/* Add more styling for specific elements as needed */
+.arrow-keys-model {
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+  background-color: lightgray;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
 }
 
-.progress-bar2 {
+.key-row {
+  display: flex;
+  justify-content: space-between;
   width: 100%;
-  height: 20px;
-  border-radius: 15px;
-  background-color: var(--Background-Beige);
 }
 
-.progress2 {
-  height: 100%;
-  background-color: var(--Primary-Dare-Orange);
-  border-radius: 15px;
-  width: 0%;
-  animation: progressDelay 4s linear 0s 1 normal forwards, progressAnimation2 15h linear forwards;
-}
-
-@keyframes progressAnimation2 {
-  from { width: 0%; }
-  to { width: 100%; }
-}
-.logo-progress {
-  grid-area: logo-progress;
-}
-
-.progress-bar {
-  width: 100%;
+.key {
+  width: 30px;
   height: 30px;
-  border-radius: 15px;
-  background-color: var(--Background-Beige);
-}
-
-.progress {
-  height: 100%;
-  background-color: var(--Primary-Dare-Orange);
-  border-radius: 15px;
-  width: 30%;
-  animation: progressDelay 4s linear 0s 1 normal forwards, progressAnimation 3s ease-out 10s 1 normal forwards;
-}
-
-@keyframes progressDelay {
-  0% { width: 0%; }
-  100% { width: 0%; }
-}
-
-@keyframes progressAnimation {
-  from { width: 0%; }
-  to { width: 30%; }
-}
-
-.right-pallete{
-  background-color: var(--Background-Beige);
-  color: var(--Primary-Dare-Orange);
-  font-family: fraunces-variable, sans-serif;
-  font-style: normal;
-  font-variation-settings: "SOFT" 0, "WONK" 1, "opsz" 9, "wght" 900;  
-}
-
-.right-pallete p{
-  color: var(--Primary-Brown);
-  font-size: 25px;
-}
-
-.left-pallete{
-  background-color: var(--Background-Paper);
-  color: var(--Primary-Navy);
-  font-weight: 800;
-}
-
-.current-task{
-  grid-area: current-task;
-}
-.today{
-  grid-area: today;
-}
-.blog{
-  grid-area: blog;
-}
-
-.edu{
-  grid-area: edu;
-}
-.to-do{
-  grid-area: to-do;
-
-}
-.gym{
-  grid-area: gym;
-}
-
-.journal{
-  grid-area: journal;
-}
-
-.stats{
-  grid-area: stats;
-}
-
-
-.time {
-  font-family: bilo, sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 60px; /* Adjust the font size as needed */
-  color: var(--Primary-Navy);
-
-}
-.date{
-  color: var(--Secondary-Grey-Blue);
-  font-size: 30px; /* Adjust the font size as needed */
-}
-
-/* video? */
-.video-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 3; /* Set a higher z-index to ensure it's on top of other content */
-}
-
-
-#main-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensure the video covers the whole container */
-}
-
-
-.round-div {
-  width: 550px; /* Adjust width as needed */
-  height: 450px; /* Adjust height as needed */
-  border-radius: 10px;
-  /* background-color: gradien; ?Adjust background color */
+  border-radius: 5px;
+  background-color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
-  margin: 30px; /* Adjust margin as needed */
-}
-.round-div.workout{
-  background: var(--Background-Beige);
-  border: 6px solid var(--Primary-Brown); /* Border with color black (#000) */
-  color: var(--Primary-Dare-Orange);
-}
-.round-div.lifestyle{
-  background: var(--Background-Paper);
-  border: 6px solid var(--Secondary-Grey-Blue); /* Border with color black (#000) */
-  color: var(--Primary-Navy);
-}
-.todo-container {
-  width: 100%;
-  margin: 0 auto;
-  border-radius: 15px;
-  margin: 10px;
-  background-color: var(--Tertiary-Timeless-System);
-  max-height: 100%;
-  min-height: 100%;
-}
-
-.todo-item {
-  margin-bottom: 10px;
-  position: relative; /* Ensure relative positioning */
-  font-size: 15px;
-  padding: 10px;
-  /* border: 1px solid #ccc; */
-  border-radius: 15px;
-  cursor: pointer;
-  background-color: var(--Secondary-Grey-Blue);
-  color: var(--Primary-Navy);
-
-}
-.todo-item:nth-child(-n+3) {
-  /* Your styles here */
-  background-color: var(--Secondary-Jeruk-Orange);
-}
-.todo-item.completed {
-  text-decoration: line-through;
-  background-color: var(--Primary-Navy);
-  color: var(--Primary-Sky-Blue);
-}
-
-.todo-input {
-  margin-top: 10px;
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-.todo-item .delete-button {
-  position: absolute; /* Absolute positioning for the delete button */
-  top: 50%; /* Position the button in the middle vertically */
-  right: 5px; /* 5px from the right edge */
-  transform: translateY(-50%); /* Center the button vertically */
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  line-height: 1;
-}
-.todo-container2 {
-  width: 100%;
-  margin: 0 auto;
-  border-radius: 15px;
-  margin: 10px;
-  background-color: var(--Tertiary-Timeless-System);
-  max-height: 100%;
-  min-height: 100%;
-}
-
-.todo-item2 {
-  margin-bottom: 10px;
-  position: relative; /* Ensure relative positioning */
-  font-size: 15px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  cursor: pointer;
-  background-color: var(--Secondary-Grey-Blue);
-  color: var(--Primary-Navy);
-
-}
-
-.todo-item2.completed {
-  text-decoration: line-through;
-  background-color: var(--Primary-Navy);
-  color: var(--Primary-Sky-Blue);
-}
-
-.todo-input2 {
-  margin-top: 10px;
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-.todo-item2 .delete-button2 {
-  position: absolute; /* Absolute positioning for the delete button */
-  top: 50%; /* Position the button in the middle vertically */
-  right: 5px; /* 5px from the right edge */
-  transform: translateY(-50%); /* Center the button vertically */
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  line-height: 1;
-}
-/* /Loading Tracker/ */
-.ipl-progress-indicator.available{opacity:0}
-.ipl-progress-indicator{background-color:var(--backdropload);width:100%;height:100%;position:fixed;opacity:1;pointer-events:none;-webkit-transition:opacity cubic-bezier(.4,0,.2,1) 436ms;-moz-transition:opacity cubic-bezier(.4,0,.2,1) 436ms;transition:opacity cubic-bezier(.4,0,.2,1) 436ms;z-index:9999}
-.insp-logo-frame{display:-webkit-flex;display:-moz-flex;display:flex;-webkit-flex-direction:column;-moz-flex-direction:column;flex-direction:column;-webkit-justify-content:center;-moz-justify-content:center;justify-content:center;-webkit-animation:fadein 436ms;-moz-animation:fadein 436ms;animation:fadein 436ms;height:98%}
-.insp-logo-frame-img{
-  margin-top:400px;
-  width:612px;
-  height:612px;
-  -webkit-align-self:center;
-  -moz-align-self:center;
-  align-self:center;
-  border-radius:50%;
-
-  @media screen and (max-width:800px){
-    width:212px;height:212px;
-    margin-top:150px;
-  }
+  font-weight: bold;
+  cursor: pointer; /* Add cursor pointer to indicate it's clickable */
 }
 
 
-.ipl-progress-indicator-head{background-color:var(--notload);height:8px;overflow:hidden;position:relative}
-.ipl-progress-indicator .first-indicator,.ipl-progress-indicator .second-indicator{background-color:var(--load);bottom:0;left:0;right:0;top:0;position:absolute;-webkit-transform-origin:left center;-moz-transform-origin:left center;transform-origin:left center;-webkit-transform:scaleX(0);-moz-transform:scaleX(0);transform:scaleX(0)}
-.ipl-progress-indicator .first-indicator{-webkit-animation:first-indicator 2s linear infinite;-moz-animation:first-indicator 2s linear infinite;animation:first-indicator 2s linear infinite}
-.ipl-progress-indicator .second-indicator{-webkit-animation:second-indicator 2s linear infinite;-moz-animation:second-indicator 2s linear infinite;animation:second-indicator 2s linear infinite}
-.ipl-progress-indicator .insp-logo{animation:App-logo-spin infinite 20s linear;border-radius:50%;-webkit-align-self:center;-moz-align-self:center;align-self:center}
-@keyframes App-logo-spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-@-webkit-keyframes fadein{from{opacity:0}to{opacity:1}}
-@-moz-keyframes fadein{from{opacity:0}to{opacity:1}}
-@keyframes fadein{from{opacity:0}to{opacity:1}}
-@keyframes first-indicator{0%{transform:translate(0) scaleX(0)}25%{transform:translate(0) scaleX(.5)}50%{transform:translate(25%) scaleX(.75)}75%{transform:translate(100%) scaleX(0)}100%{transform:translate(100%) scaleX(0)}}
-@keyframes second-indicator{0%{transform:translate(0) scaleX(0)}60%{transform:translate(0) scaleX(0)}80%{transform:translate(0) scaleX(.6)}100%{transform:translate(100%) scaleX(.1)}}
+/* CSS for pressed key */
+.key.highlighted {
+  background-color: orange;
+  color: white;
+}
