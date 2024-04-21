@@ -5,7 +5,9 @@
     <title>Yuji Nojima Program</title>
     <link rel="stylesheet" href="index.css" />
     <link rel="stylesheet" href="https://use.typekit.net/ntn5tjm.css">
+    <link rel="stylesheet" href="https://fonts.adobe.com/fonts/fraunces-variable">
   </head>
+
   <body>
   <!-- Navigation Bar Draggable -->
   <div class="navbar" id="customTitleBar">
@@ -36,46 +38,92 @@
           Your browser does not support the video tag.
         </video>
       </div>
-      <div class="round-div lifestyle" onclick="goToPage('./pages/1-lifestyle.html')"><h1>LIFESTYLE</h1></div>
-      <div class="round-div workout" onclick="goToPage('./pages/2-workout.html')"><h1>WORKOUT</h1></div>
-    </div>
 
+      <div class="left-nav">
+        <ul class="menu-items">
+          <li>a</li>
+          <li>b</li>
+          <li>c</li>
+        </ul>
+      </div>
+      <div class="backdrop">
+        <div class="root content">
+          <div class="content-child time-capsule">
+            <h3 id="date" class="date"></h3>
+            <!-- <div class="progress-bar2">
+              <div class="progress2"></div>
+            </div> -->
+            <div id="time" class="time"></div>
+          </div>
+          <div class="content-child logo-progress">
+
+
+            <!-- <input type="number" id="percentInput" min="0" max="100" value="0"> -->
+            <!-- <button onclick="updateProgress()">Update Progress</button> -->
+          </div>
+          <div class="content-child blog">
+            <h3>Blog</h3>
+          </div>
+          <div class="content-child to-do">
+            <h3>Projects</h3>
+            <div class="todo-container2">
+              <div class="todo-list2" id="todo-list2">
+                <!-- To-do items will be appended here -->
+              </div>
+              <input type="text" id="todo-input2" placeholder="Add a new to-do...">
+              <input type="date" id="complete-by-input2" placeholder="Complete by (optional)">
+          
+            </div>
+          </div>
+          <div class="content-child edu">
+            <h3>BOOK REC  </h3>
+            <p>48 Laws of Power<br/> 30 pages</p>
+          </div>
+          <div class="content-child gym">
+            <h3>GYM DAY</h3>
+            <p>Chest and Shoulders <br/> 40 mins</p>
+          </div>
+          <div class="content-child stats">
+            <h3>STATS</h3>
+          </div>
+          <div class="content-child journal">
+            <h3>JOURNAL</h3>
+          </div>
+          <div class="content-child current-task">
+            <h3>TIMELINE</h3>
+          </div>
+          <div class="content-child today">
+
+            <img src="../assets/images/yujilogo.png" width="100%"/>
+            <div class="todo-container">
+              <div class="todo-list" id="todo-list">
+                <!-- To-do items will be appended here -->
+              </div>
+              <input type="text" id="todo-input" placeholder="Add a new to-do...">
+              <input type="time" id="complete-by-input" placeholder="Complete by (optional)">
+          
+            </div>
+            <h3>DAY PROGRESS 20/36</h3>
+            <div class="progress-bar">
+              <div class="progress"></div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+      </div>
+    </div>
+  <!-- Scripts -->
+  <script src="./scripts/progressBar.js"></script>
+  <script src="./scripts/navigation.js"></script>
+  <script src="./scripts/dateTime.js"></script>
+  <script src="./scripts/toDoList.js"></script>
+  <script src="./scripts/Projects.js"></script>
 
     <!-- Scripts -->
-    <script>
-      const ele = document.getElementById('ipl-progress-indicator');
-      const videoContainer = document.getElementById('video-container');
-      const video = document.getElementById('main-video');
-      const mainContainer = document.getElementById('main-container');
-      function goToPage(page) {
-            // Navigate to the specified page
-            window.location.href = page;
-        }
-        // REMOVE
-        // videoContainer.remove();
-  // Pause the video to ensure it doesn't continue playing after removal
-  video.pause();
-      if (ele) {
-        // Set a timeout to remove the loading screen after 2 seconds
-        setTimeout(() => {
-          // Remove the loading screen from the DOM
-          ele.remove();
-          // Set a timeout to play the video after 1 second
-            // Listen for the 'ended' event on the video element
-            video.addEventListener('ended', () => {
-              // Remove the video element from the DOM after it has finished playing once
-              videoContainer.remove();
-              mainContainer.classList.add('dashboard');
-            });
-            // Play the video
-            video.play();
-        
 
-            //REMVOE
-        }, 2500); // Remove the loading screen after 2 seconds
-        // }, 100); // Remove the loading screen after 2 seconds
-      }
-    </script>
     <!-- <script src="./renderer.js"></script> -->
   </body>
 </html>

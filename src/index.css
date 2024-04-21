@@ -75,7 +75,7 @@ h1.dare{
   text-align: center;
 }
 
-button {
+/* button {
   background-color: var(--Background-Paper);
   height: 50px;
   width: 180px;
@@ -85,6 +85,15 @@ button {
   font-weight: bold;
   font-size: 15px;
   text-align: center; /* Center text horizontally */
+/* } */
+ul {
+  list-style-type: none;
+  margin: none;
+  padding: 0;
+  margin: 0;
+}
+li{
+  text-decoration: none;
 }
 
 .button-content {
@@ -106,6 +115,212 @@ button img {
 
 .dashboard{
   background-color: var(--Background-Paper);
+}
+
+:root{
+  --nav-bar:var(--Tertiary-Timeless-System);
+  --nav-bar-size:5%;
+
+}
+/* /Navigation Bar Styles/ */
+.left-nav {
+  height: 100%;
+  width: var(--nav-bar-size); /* Occupy 20% of the width */
+  position: fixed; /* Fix the navbar at the top */
+  top: 0; /* Align at the top */
+  left: 0; /* Align at the left */
+  z-index: 2; /* Ensure the navbar is on top */
+  background-color: var(--nav-bar);
+  text-decoration: none;
+  text-align: center;
+  padding-top: 50px;
+}
+
+ul.parent li{
+  padding-top: 20px;
+}
+
+
+.backdrop{
+  /* padding-top: 40px; */
+  width: 95%; /* Occupy 80% of the width */
+  height: 100%;
+  position: fixed; /* Position the content absolutely */
+  top: 0; /* Align at the top */
+  left: var(--nav-bar-size); /* Align at 20% from the left */
+  background-color: var(--nav-bar);
+}
+
+/* /Main Content Styles/ */
+.content {
+  height: 100%;
+  width: 100%;
+  /* border-radius: 10px; */
+  background-color: var(--Background-Paper);
+  z-index: 1; /* Ensure the content is behind the navbar */
+  display: grid;
+  grid-template-columns: 25% 25% 25% 12.5% 12.5%;
+  grid-template-rows: 25% 37.5% 37.5%;
+  grid-template-areas: 
+    "time today current-task stats stats"
+    "to-do today current-task journal gym"
+    "edu today current-task blog blog"
+}
+
+
+.content-child{
+  border: 2px solid var(--Tertiary-Elegance-System);
+  padding: 20px;
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 30px;
+}
+
+.content-child.time-capsule{
+  justify-content: flex-end; /* Align items to the bottom */
+}
+.content-child.logo-progress{
+  justify-content: flex-end; /* Align items to the bottom */
+}
+
+.content-child h3{
+  margin: 0px;
+  padding: 0px;
+  font-size: 25px;
+}
+
+.time-capsule{
+  grid-area: time;
+  border: 2px solid var(--Primary-Sky-Blue);
+}
+
+.progress-bar2 {
+  width: 100%;
+  height: 20px;
+  border-radius: 15px;
+  background-color: var(--Background-Beige);
+}
+
+.progress2 {
+  height: 100%;
+  background-color: var(--Primary-Dare-Orange);
+  border-radius: 15px;
+  width: 0%;
+  animation: progressDelay 4s linear 0s 1 normal forwards, progressAnimation2 15h linear forwards;
+}
+
+@keyframes progressAnimation2 {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+.logo-progress {
+  grid-area: logo-progress;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 30px;
+  border-radius: 15px;
+  background-color: var(--Background-Beige);
+}
+
+.progress {
+  height: 100%;
+  background-color: var(--Primary-Dare-Orange);
+  border-radius: 15px;
+  width: 30%;
+  animation: progressDelay 4s linear 0s 1 normal forwards, progressAnimation 3s ease-out 10s 1 normal forwards;
+}
+
+@keyframes progressDelay {
+  0% { width: 0%; }
+  100% { width: 0%; }
+}
+
+@keyframes progressAnimation {
+  from { width: 0%; }
+  to { width: 30%; }
+}
+
+.right-pallete{
+  background-color: var(--Background-Beige);
+  color: var(--Primary-Dare-Orange);
+  font-family: fraunces-variable, sans-serif;
+  font-style: normal;
+  font-variation-settings: "SOFT" 0, "WONK" 1, "opsz" 9, "wght" 900;  
+}
+
+.right-pallete p{
+  color: var(--Primary-Brown);
+  font-size: 25px;
+}
+
+.left-pallete{
+  background-color: var(--Background-Paper);
+  color: var(--Primary-Navy);
+  font-weight: 800;
+}
+
+.current-task{
+  grid-area: current-task;
+}
+.today{
+  grid-area: today;
+}
+.blog{
+  grid-area: blog;
+}
+
+.edu{
+  grid-area: edu;
+}
+.to-do{
+  grid-area: to-do;
+
+}
+.gym{
+  grid-area: gym;
+}
+
+.journal{
+  grid-area: journal;
+}
+
+.stats{
+  grid-area: stats;
+}
+
+
+.time {
+  font-family: bilo, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 60px; /* Adjust the font size as needed */
+  color: var(--Primary-Navy);
+
+}
+.date{
+  color: var(--Secondary-Grey-Blue);
+  font-size: 30px; /* Adjust the font size as needed */
+}
+
+/* video? */
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3; /* Set a higher z-index to ensure it's on top of other content */
+}
+
+
+#main-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the video covers the whole container */
 }
 
 
@@ -130,22 +345,103 @@ button img {
   border: 6px solid var(--Secondary-Grey-Blue); /* Border with color black (#000) */
   color: var(--Primary-Navy);
 }
-/* video? */
-.video-container {
-  position: absolute;
-  top: 0;
-  left: 0;
+.todo-container {
   width: 100%;
-  height: 100%;
+  margin: 0 auto;
+  border-radius: 15px;
+  margin: 10px;
+  background-color: var(--Tertiary-Timeless-System);
+  max-height: 100%;
+  min-height: 100%;
 }
 
+.todo-item {
+  margin-bottom: 10px;
+  position: relative; /* Ensure relative positioning */
+  font-size: 15px;
+  padding: 10px;
+  /* border: 1px solid #ccc; */
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: var(--Secondary-Grey-Blue);
+  color: var(--Primary-Navy);
 
-#main-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensure the video covers the whole container */
+}
+.todo-item:nth-child(-n+3) {
+  /* Your styles here */
+  background-color: var(--Secondary-Jeruk-Orange);
+}
+.todo-item.completed {
+  text-decoration: line-through;
+  background-color: var(--Primary-Navy);
+  color: var(--Primary-Sky-Blue);
 }
 
+.todo-input {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.todo-item .delete-button {
+  position: absolute; /* Absolute positioning for the delete button */
+  top: 50%; /* Position the button in the middle vertically */
+  right: 5px; /* 5px from the right edge */
+  transform: translateY(-50%); /* Center the button vertically */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+}
+.todo-container2 {
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 15px;
+  margin: 10px;
+  background-color: var(--Tertiary-Timeless-System);
+  max-height: 100%;
+  min-height: 100%;
+}
+
+.todo-item2 {
+  margin-bottom: 10px;
+  position: relative; /* Ensure relative positioning */
+  font-size: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: var(--Secondary-Grey-Blue);
+  color: var(--Primary-Navy);
+
+}
+
+.todo-item2.completed {
+  text-decoration: line-through;
+  background-color: var(--Primary-Navy);
+  color: var(--Primary-Sky-Blue);
+}
+
+.todo-input2 {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.todo-item2 .delete-button2 {
+  position: absolute; /* Absolute positioning for the delete button */
+  top: 50%; /* Position the button in the middle vertically */
+  right: 5px; /* 5px from the right edge */
+  transform: translateY(-50%); /* Center the button vertically */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+}
 /* /Loading Tracker/ */
 .ipl-progress-indicator.available{opacity:0}
 .ipl-progress-indicator{background-color:var(--backdropload);width:100%;height:100%;position:fixed;opacity:1;pointer-events:none;-webkit-transition:opacity cubic-bezier(.4,0,.2,1) 436ms;-moz-transition:opacity cubic-bezier(.4,0,.2,1) 436ms;transition:opacity cubic-bezier(.4,0,.2,1) 436ms;z-index:9999}
