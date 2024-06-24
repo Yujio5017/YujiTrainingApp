@@ -17,6 +17,14 @@ async function fetchTodos() {
 
 // Function to create a new to-do item
 function createTodoItem(todoText, completeByTime, todoId) {
+// // Create a checkbox element
+// var checkbox = document.createElement('input');
+
+// // Set the type attribute to checkbox
+// checkbox.type = 'checkbox';
+// checkbox.classList.add('checkbox');
+// todoList.appendChild(checkbox);
+
   const todoItem = document.createElement('div');
   todoItem.classList.add('todo-item');
   todoItem.textContent = todoText;
@@ -43,7 +51,9 @@ function createTodoItem(todoText, completeByTime, todoId) {
     console.log("deleting from json")
     event.stopPropagation();
   });
-
+  // Create divider 
+  const divider = document.createElement('div');
+  divider.classList.add('divider');
   // Event listener to toggle completion on click
   todoItem.addEventListener('click', function() {
     todoItem.classList.toggle('completed');
@@ -55,6 +65,8 @@ function createTodoItem(todoText, completeByTime, todoId) {
 
   // Append the new to-do item to the list
   todoList.appendChild(todoItem);
+
+  todoList.appendChild(divider);
 }
 
 // Function to delete a to-do item from the JSON file

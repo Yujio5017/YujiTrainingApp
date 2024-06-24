@@ -1,7 +1,7 @@
 html{
   overflow: hidden;
 }
-li{
+.menu-items li{
   list-style: none;
 }
 .grid-container {
@@ -60,7 +60,10 @@ li{
   background-color: #ff7f0e; /* Change to your desired color */
   color: white; /* Change to your desired text color */
 }
-
+.delete-button{
+  align-self: right;
+  text-align: right;
+}
 @font-face {
   font-family: 'Big Noodle Titling';
   src: url('./fonts/big_noodle_titling.ttf') format('opentype'),
@@ -77,14 +80,14 @@ li{
 }
 
 /* Font styles */
-.title, .side-menu li,.description,.arrow-keys-model,.quote {
+.title, .side-menu li,.description,.arrow-keys-model,.quote,.todo-item, p {
   font-family: 'Config Condensed Medium', sans-serif;
 }
 .main-menu li{
   cursor: pointer;
 
 }
-.title.selected, .main-menu {
+.title.selected, .main-menu, h1 {
   font-family: 'Big Noodle Titling', sans-serif; /* BigNoodleTitling OBLIQUE font */
   font-size: 30px;
 }
@@ -153,4 +156,85 @@ li{
 .key.highlighted {
   background-color: orange;
   color: white;
+}
+/* Styles for the notepad */
+.todo-container {
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 500px; /* Adjust as needed */
+  height: 80%;
+}
+
+/* Styles for the input fields */
+input[type="text"],
+input[type="time"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Style for the back button */
+#myButton {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#myButton:hover {
+  background-color: #0056b3;
+}
+.divider{
+  height: 2px;
+  background-color: black;
+  width: 100%;
+  margin-top: -10px;
+}
+.todo-item {
+  font-family: 'Config Condensed Medium', sans-serif;
+  margin-bottom: 10px;
+  position: relative; /* Ensure relative positioning */
+  font-size: 15px;
+  padding: 10px;
+  /* border: 1px solid #ccc; */
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: var(--Secondary-Grey-Blue);
+  color: var(--Primary-Navy);
+
+}
+.todo-item:nth-child(-n+3) {
+  /* Your styles here */
+  background-color: var(--Secondary-Jeruk-Orange);
+}
+.todo-item.completed {
+  text-decoration: line-through;
+  background-color: brown;
+  color: var(--Primary-Sky-Blue);
+}
+
+.todo-input {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.todo-item .delete-button {
+  position: absolute; /* Absolute positioning for the delete button */
+  top: 50%; /* Position the button in the middle vertically */
+  right: 5px; /* 5px from the right edge */
+  transform: translateY(-50%); /* Center the button vertically */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
 }
