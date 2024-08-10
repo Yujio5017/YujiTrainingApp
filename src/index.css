@@ -158,6 +158,35 @@ ul.parent li{
   width: 200px;
 }
 
+/* Adjust styles when viewport height is below 600px */
+@media (max-height: 800px) {
+  .backdrop{
+    padding-top: 24vh;
+  }
+  .central {
+    transform: scale(0.8); /* Scale down the content */
+  }
+}
+
+/* Adjust styles when viewport height is below 400px */
+@media (max-height: 600px) {
+  .backdrop{
+    padding-top: 16vh;
+  }
+  .central {
+    transform: scale(0.6); /* Scale down further */
+  }
+}
+
+/* Adjust styles when viewport height is below 400px */
+@media (max-height: 450px) {
+  .backdrop{
+    padding-top: 12vh;
+  }.central {
+    transform: scale(0.4); /* Scale down further */
+  }
+}
+
 .timer{
   text-align: center;
   font-size: 48px;
