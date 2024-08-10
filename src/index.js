@@ -38,8 +38,8 @@ const createWindow = () => {
       symbolColor: '#FFE4C8',
       height: 40
     },
-    width: 1620,
-    height: 911,
+    width: 620,
+    height: 1001,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration:true,
@@ -78,4 +78,5 @@ app.on('window-all-closed', () => {
     app.quit();
   }
 });
+
 

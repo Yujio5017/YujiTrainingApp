@@ -25,9 +25,9 @@ html, body {
 }
 
 body {
-  font-family: pragmatica, sans-serif;
+  font-family: bilo, sans-serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 800;
   background-color: var(--Background-Beige);
 }
 
@@ -117,11 +117,7 @@ button img {
   background-color: var(--Background-Paper);
 }
 
-:root{
-  --nav-bar:var(--Tertiary-Timeless-System);
-  --nav-bar-size:5%;
 
-}
 /* /Navigation Bar Styles/ */
 .left-nav {
   height: 100%;
@@ -143,12 +139,104 @@ ul.parent li{
 
 .backdrop{
   /* padding-top: 40px; */
-  width: 95%; /* Occupy 80% of the width */
+  width: 100%; /* Occupy 80% of the width */
   height: 100%;
   position: fixed; /* Position the content absolutely */
   top: 0; /* Align at the top */
   left: var(--nav-bar-size); /* Align at 20% from the left */
-  background-color: var(--nav-bar);
+  background-color: var(--Background-Beige);
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 32vh;
+}
+
+
+.central{
+  align-items: center;
+  margin: auto;
+  width: 200px;
+}
+
+.timer{
+  text-align: center;
+  font-size: 48px;
+}
+
+.set{
+  text-align: center;
+  font-size: 20px;
+}
+
+.button-center{
+  display: flex;
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+}
+.reset-container {
+  display: inline-block;
+  border-radius: 50%;
+  width: 46px; /* Adjust size as needed */
+  height: 46px; /* Adjust size as needed */
+  background-color: var(--Background-Paper); /* Background color of the button */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
+  text-align: center;
+  line-height: 46px; /* Aligns SVG vertically */
+  cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+}
+
+.reset-container:hover, .button-container:hover {
+  transition: fill 0.3s ease; /* Smooth transition for fill property */
+  background-color: #f7b490; /* Background color of the button */
+}
+
+
+.button-container {
+  display: inline-block;
+  border-radius: 50%;
+  width: 56px; /* Adjust size as needed */
+  height: 56px; /* Adjust size as needed */
+  background-color: var(--Background-Paper); /* Background color of the button */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
+  text-align: center;
+  line-height: 56px; /* Aligns SVG vertically */
+  cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.reset-container img {
+  width: 28px; /* Adjust size as needed */
+  height: 28px; /* Adjust size as needed */
+  vertical-align: middle;
+}
+.button-container img {
+  width: 28px; /* Adjust size as needed */
+  height: 28px; /* Adjust size as needed */
+  vertical-align: middle;
+}
+
+#progressCircle {
+  stroke-dasharray: 502.4; /* Adjust based on your actual path length */
+  transition: stroke-dashoffset 0.4s ease, stroke 0.1s ease; /* Smooth transitions for dash offset and stroke color */
+}
+.focus{
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.green {
+  stroke: rgb(88, 224, 241) !important;
+}
+
+.icon {
+  fill: var(--Secondary-Jeruk-Orange); /* Default color */
+  transition: fill 0.3s ease; /* Smooth transition for fill property */
+}
+
+.icon:hover {
+  fill: var(--Primary-Dare-Orange); /* Example: Change to red on hover */
 }
 
 /* /Main Content Styles/ */

@@ -11,7 +11,7 @@ function goToPage(page) {
 // REMOVE
 // videoContainer.remove();
 // Pause the video to ensure it doesn't continue playing after removal
-video.pause();
+// video.pause();
 
 if (ele) {
   // Set a timeout to remove the loading screen after 2 seconds
@@ -20,15 +20,15 @@ if (ele) {
     ele.remove();
     // Set a timeout to play the video after 1 second
     // Listen for the 'ended' event on the video element
-    video.addEventListener('ended', () => {
-      // Remove the video element from the DOM after it has finished playing once
-      videoContainer.remove();
-      mainContainer.classList.add('dashboard');
-    });
+    // video.addEventListener('ended', () => {
+    //   // Remove the video element from the DOM after it has finished playing once
+    //   videoContainer.remove();
+    //   mainContainer.classList.add('dashboard');
+    // });
     // Play the video
-    video.play();
+    // video.play();
 
     // REMOVE
-    }, 2500); // Remove the loading screen after 2 seconds
-  // }, 100); // Remove the loading screen after 2 seconds
+    }, 1500); // Remove the loading screen after 2 seconds
+  // }, 300); // Remove the loading screen after 2 seconds
 }
