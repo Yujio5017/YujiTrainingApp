@@ -1,6 +1,6 @@
-const TOTAL_TIMER = 7; // 25 minutes in seconds (1500)
+const TOTAL_TIMER = 1500; // 25 minutes in seconds (1500)
 const INITIAL_SET= 1;  // Starts at Set 1
-const BREAK_TIMER = 5;
+const BREAK_TIMER = 300; // 5 minutes in seconds (300)
 
 let timer;
 let timeLeft = TOTAL_TIMER; 
@@ -126,6 +126,12 @@ function resetTimerHeader() {
   setTitle.textContent = `Set ${set}`;
   backgroundBar.setAttribute('stroke', '#F15822');
 
+}
+
+
+// Skip the Timer
+function skipTimer(){
+  timeLeft=0;
 }
 
 
