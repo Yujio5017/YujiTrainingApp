@@ -7,6 +7,7 @@ let timeLeft = TOTAL_TIMER;
 let set= INITIAL_SET;
 let breaktimeleft = BREAK_TIMER;
 
+let setCounter = set;
 const totalTime = timeLeft;
 const totalBreakTime = breaktimeleft;
 
@@ -73,22 +74,19 @@ function updateTimer() {
     progressBar.classList.remove('green');
   }
 
+  // Set the text
+  setPomodoroText();
 
   if (timeLeft <= 0) {
     // Reset Timer and Header and Circle
     clearInterval(timerInterval);
     setCounter += 1;
-
+    setPomodoroText();
     resetTimerHeader();
     progressBar.style.strokeDashoffset = progressBar.getAttribute('stroke-dasharray');
     if (setCounter == 1 || setCounter % 2 != 0) {
-      backgroundBar.setAttribute('stroke', '#F15822');
-      const displaySet = setCounter == 1 ? setCounter : setCounter - 1;
-      setTitle.textContent = `Set ${displaySet}`;
       timeLeft = totalTime;
     } else {
-      backgroundBar.setAttribute('stroke', 'orange');
-      setTitle.textContent = "BREAK";
       timeLeft = totalBreakTime;
     }
 
@@ -98,6 +96,22 @@ function updateTimer() {
     playAudio();
   }
 }
+
+// Function to set Text and color
+function setPomodoroText(){
+  if (setCounter == 1 || setCounter % 2 != 0) {
+    backgroundBar.setAttribute('stroke', '#F15822');
+    const displaySet = setCounter == 1 ? setCounter : setCounter - 1;
+    const activityList = document.getElementById('activity-list');
+    const listItems = activityList.children;
+    const ListItem = listItems.item(displaySet-1) ? `Set ${displaySet} - ${listItems.item(displaySet-1).firstChild.textContent}` : `Set ${displaySet}`;
+    setTitle.textContent = ListItem;
+  } else{
+    backgroundBar.setAttribute('stroke', 'orange');
+    setTitle.textContent = "BREAK";
+  }
+}
+
 
 // Function to play the audio
 function playAudio() {
@@ -123,7 +137,6 @@ function resetTimerHeader() {
   const secondsReset = resetVariable % 60;
   const timerDisplayReset = `${minutesReset.toString().padStart(2, '0')}:${secondsReset.toString().padStart(2, '0')}`;
   document.querySelector('h1').textContent = timerDisplayReset;
-  setTitle.textContent = `Set ${set}`;
   backgroundBar.setAttribute('stroke', '#F15822');
 
 }
@@ -136,10 +149,10 @@ function skipTimer(){
 
 
 // Event listener for start/pause button
-document.getElementById('playPauseButton').addEventListener('click', togglePlayPause);
+// document.getElementById('playPauseButton').addEventListener('click', togglePlayPause);
 
 // Event listener for reset button
-resetButton.addEventListener('click', resetTimer);
+// resetButton.addEventListener('click', resetTimer);
 
 // Optionally, you can also trigger startTimer() directly from the start button
-startButton.addEventListener('click', startTimer);
+// startButton.addEventListener('click', startTimer);

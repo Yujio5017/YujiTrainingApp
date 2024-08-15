@@ -39,9 +39,9 @@
         </video>
       </div> -->
 
-      <div class="backdrop">
-       <div class="central">
-          <div>
+      <div class="container_A">
+       <div class="container_B">
+          <div class="center">
             <div class="circle-container" ></div>
               <svg width="200" height="200">
                 <!-- Background circle (total progress) -->
@@ -69,8 +69,19 @@
                 <img id="restIcon" src="./database/skip.svg" alt="Play Button">
               </div>
             </div>
-          </div>
        </div>
+
+       <div class="container_C">
+        <p id="date"></p>
+        <p id="time"></p>
+        <h2>Next 3 Activities</h2>
+        <ul id="activity-list">
+          <!-- List items will be added here -->
+        </ul>
+        <input id="activity-input" type="text" placeholder="Add new activity">
+        <button id="add-activity-btn">Add</button>
+      </div>
+      </div>
       </div>
 
       </div>
@@ -79,9 +90,11 @@
   <script src="./scripts/progressBar.js"></script>
   <script src="./scripts/navigation.js"></script>
   <script src="./scripts/dateTime.js"></script>
-  <script src="./scripts/toDoList.js"></script>
-  <script src="./scripts/Projects.js"></script>
+  <!-- <script src="./scripts/toDoList.js"></script> -->
+  <!-- <script src="./scripts/Projects.js"></script> -->
   <script src="./scripts/timer.js"></script>
+  <script src="./scripts/list.js"></script>
+
     <!-- Scripts -->
 
     <!-- <script src="./renderer.js"></script> -->

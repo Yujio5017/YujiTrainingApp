@@ -108,7 +108,6 @@ button img {
 }
 
 .container {
-  position: relative;
   width: 100%;
   height: 100%;
 }
@@ -137,53 +136,60 @@ ul.parent li{
 }
 
 
-.backdrop{
+.container_A{
   /* padding-top: 40px; */
   width: 100%; /* Occupy 80% of the width */
   height: 100%;
-  position: fixed; /* Position the content absolutely */
+  position: static; /* Position the content absolutely */
   top: 0; /* Align at the top */
   left: var(--nav-bar-size); /* Align at 20% from the left */
   background-color: var(--Background-Beige);
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+
+
+.container_B{
+  flex-basis: 50%;
+  width: 100%;
+  order: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   flex-direction: column;
+
+}
+
+.container_C{
+  flex-basis: 50%;
+  width: 100%;
+  order: 2;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  padding-top: 32vh;
+  text-align: center;
+  flex-direction: column;
 }
 
-
-.central{
-  align-items: center;
-  margin: auto;
-  width: 200px;
+#date{
+  color: var(--Primary-Dare-Orange);
+  font-size: 5vw;
 }
 
-/* Adjust styles when viewport height is below 600px */
-@media (max-height: 800px) {
-  .backdrop{
-    padding-top: 24vh;
-  }
-  .central {
-    transform: scale(0.8); /* Scale down the content */
-  }
+#time{
+  color: var(--Primary-Dare-Orange);
+  font-size: 3vw;
 }
 
-/* Adjust styles when viewport height is below 400px */
-@media (max-height: 600px) {
-  .backdrop{
-    padding-top: 16vh;
+@media (max-width: 700px) {
+  .container_B, .container_C {
+    flex-basis: 100%;
+    flex-direction: column;
   }
-  .central {
-    transform: scale(0.6); /* Scale down further */
-  }
-}
-
-/* Adjust styles when viewport height is below 400px */
-@media (max-height: 450px) {
-  .backdrop{
-    padding-top: 12vh;
-  }.central {
-    transform: scale(0.4); /* Scale down further */
+  .container_C{
+    display: none;
   }
 }
 
@@ -191,6 +197,7 @@ ul.parent li{
   text-align: center;
   font-size: 48px;
 }
+
 
 .set{
   text-align: center;
