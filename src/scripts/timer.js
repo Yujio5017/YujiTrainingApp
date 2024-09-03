@@ -2,14 +2,17 @@ const TOTAL_TIMER = 1500; // 25 minutes in seconds (1500)
 const INITIAL_SET= 1;  // Starts at Set 1
 const BREAK_TIMER = 300; // 5 minutes in seconds (300)
 
-let timer;
+let startTime = Date.now();
 let timeLeft = TOTAL_TIMER; 
 let set= INITIAL_SET;
 let breaktimeleft = BREAK_TIMER;
+let totalBothTime =  TOTAL_TIMER + BREAK_TIMER;
+
 
 let setCounter = set;
 const totalTime = timeLeft;
 const totalBreakTime = breaktimeleft;
+const totalAllTime = totalBothTime;
 
 // Get the audio element
 var audio = document.getElementById('myAudio');
@@ -25,6 +28,49 @@ progressBar.style.strokeDashoffset = progressBar.getAttribute('stroke-dasharray'
 
 let isPlaying = false; // Initial state: not playing
 let timerInterval; // Variable to hold the timer interval
+let started = false;
+
+class TimestampSingleton {
+  static instance;
+  static timestamp;
+
+  constructor() {
+    if (!TimestampSingleton.instance) {
+      TimestampSingleton.instance = this;
+      TimestampSingleton.timestamp = Date.now();
+    }
+    return TimestampSingleton.instance;
+  }
+  static getInstance() {
+    if (!TimestampSingleton.instance) {
+      TimestampSingleton.instance = new TimestampSingleton();
+    }
+    return TimestampSingleton.instance;
+  }
+  getTimestamp() {
+    return TimestampSingleton.timestamp;
+  }
+
+  updateTimestamp() {
+    TimestampSingleton.timestamp = Date.now();
+  }
+}
+
+// Usage:
+const singleton = new TimestampSingleton();
+
+
+
+// let lastMinute = new Date().getMinutes();
+
+// setInterval(() => {
+//   const currentMinute = new Date().getMinutes();
+//   if (currentMinute !== lastMinute) {
+//     lastMinute = currentMinute;
+//     updateActivityList();
+//   }
+// }, 1000); // check every second
+
 
 resetTimerHeader();
 
@@ -49,16 +95,20 @@ function startTimer() {
   console.log('Timer started!');
   timerInterval = setInterval(updateTimer, 1000); // Update timer every second (1000 ms)
   setCounter=set;
+  if (started == false) {
+    singleton.updateTimestamp();
+    started = true;
+  }
 }
 
 function updateTimer() {
   timeLeft--;
+  totalBothTime--;
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
   const timerDisplay = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
   document.querySelector('h1').textContent = timerDisplay;
   let progress = setCounter == 1 || setCounter % 2 != 0 ? ((totalTime - timeLeft) / totalTime) * 100 : ((totalBreakTime- timeLeft) / totalBreakTime) * 100; 
-
 
   const dashOffset = progressBar.getTotalLength() - (progress / 100) * progressBar.getTotalLength();
   
@@ -90,6 +140,7 @@ function updateTimer() {
       timeLeft = totalBreakTime;
     }
 
+    totalBothTime = totalAllTime;
     timerInterval = setInterval(updateTimer, 1000); // Update timer every second (1000 ms)
 
     // Play Dings
@@ -104,7 +155,7 @@ function setPomodoroText(){
     const displaySet = setCounter == 1 ? setCounter : setCounter - 1;
     const activityList = document.getElementById('activity-list');
     const listItems = activityList.children;
-    const ListItem = listItems.item(displaySet-1) ? `Set ${displaySet} - ${listItems.item(displaySet-1).firstChild.textContent}` : `Set ${displaySet}`;
+    const ListItem = listItems.item(displaySet-1) ? `Set ${displaySet} - ${listItems.item(displaySet-1).querySelector('#activity-name').textContent}` : `Set ${displaySet}`;
     setTitle.textContent = ListItem;
   } else{
     backgroundBar.setAttribute('stroke', 'orange');
@@ -121,7 +172,7 @@ function playAudio() {
 function resetTimer() {
   clearInterval(timerInterval);
   timeLeft = totalTime;
-  setCounter=set;
+  setCounter=set; 
   setTitle.textContent=`Set ${set.toString()}`;
   resetTimerHeader();
   progressBar.style.strokeDashoffset = progressBar.getAttribute('stroke-dasharray');
@@ -138,7 +189,7 @@ function resetTimerHeader() {
   const timerDisplayReset = `${minutesReset.toString().padStart(2, '0')}:${secondsReset.toString().padStart(2, '0')}`;
   document.querySelector('h1').textContent = timerDisplayReset;
   backgroundBar.setAttribute('stroke', '#F15822');
-
+  singleton.updateTimestamp();
 }
 
 
@@ -146,7 +197,48 @@ function resetTimerHeader() {
 function skipTimer(){
   timeLeft=0;
 }
+// nowTime + remainingtime + orderedtime
+function updateActivityList(){
+  const activityList = document.getElementById('activity-list');
+  const listItems = activityList.children;
+  let time = Date.now();
+  let newTime;
+    for (let i = 1; i < listItems.length + 1 ; i++){
+      // update if set counter has not passed ie sset 2
+      if (i != 1 || setCounter >= (2 * i) - 1) {
+        newTime = time  + (totalBothTime) + (i * 30 * 60 * 1000)
+        listItems.item(i-1).querySelector('#activity-time').textContent = formatTime(newTime);
+      } else {
+        newTime = time  + (totalBothTime);
+        listItems.item(i-1).querySelector('#activity-time').textContent = formatTime(newTime);
+      }
+    }
+}
 
+
+function formatTime(timestamp) {
+  const date = new Date(timestamp);
+  const hours = date.getHours() % 12;
+  const minutes = date.getMinutes();
+  const ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+  return `${hours > 0 ? hours : 12}:${minutes.toString().padStart(2, '0')} ${ampm}`;
+}
+
+
+(function (root, factory) {
+  if (typeof exports === 'object') {
+    // CommonJS
+    module.exports = factory();
+  } else if (typeof define === 'function' && define.amd) {
+    // AMD
+    define(factory);
+  } else {
+    // Browser
+    root.timestampSingleton = factory();
+  }
+}(this, function () {
+  return TimestampSingleton.getInstance();
+}));
 
 // Event listener for start/pause button
 // document.getElementById('playPauseButton').addEventListener('click', togglePlayPause);

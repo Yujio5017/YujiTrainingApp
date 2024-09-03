@@ -94,6 +94,13 @@ ul {
 }
 li{
   text-decoration: none;
+  padding: 0;
+  margin: 0;
+}
+
+p{
+  padding: 0;
+  margin: 0;
 }
 
 .button-content {
@@ -175,14 +182,20 @@ ul.parent li{
 
 #date{
   color: var(--Primary-Dare-Orange);
-  font-size: 5vw;
+  font-size: 25px;
+  margin-top: 25px;
 }
 
 #time{
   color: var(--Primary-Dare-Orange);
-  font-size: 3vw;
-}
+  font-size: 4.5vw;
+  margin: 0px;
+  padding-top: 4vw;
 
+}
+#setTitle{
+  padding: 10px;
+}
 @media (max-width: 700px) {
   .container_B, .container_C {
     flex-basis: 100%;
@@ -198,6 +211,41 @@ ul.parent li{
   font-size: 48px;
 }
 
+#activity-list, #focus-list{
+  min-height: 100px;
+}
+
+#activity-list > li, #focus-list > li{
+  font-size: 20px;
+  text-align: left;
+  display: ruby-text;
+}
+
+#activity-list > li > button, #focus-list > li > button{
+  margin-left: 57px;
+}
+
+#activity-input, #focus-input {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+#focus-complete{
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  color: #818181;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  /* display: none; */
+}
+
+#activity-name{
+  padding-left: 40px;
+}
 
 .set{
   text-align: center;
@@ -501,13 +549,7 @@ ul.parent li{
   color: var(--Primary-Sky-Blue);
 }
 
-.todo-input {
-  margin-top: 10px;
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
+
 .todo-item .delete-button {
   position: absolute; /* Absolute positioning for the delete button */
   top: 50%; /* Position the button in the middle vertically */

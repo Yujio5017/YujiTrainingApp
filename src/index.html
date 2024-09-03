@@ -72,9 +72,22 @@
        </div>
 
        <div class="container_C">
-        <p id="date"></p>
-        <p id="time"></p>
-        <h2>Next 3 Activities</h2>
+        <div>
+          <p id="time"></p>
+          <p id="date"></p>
+        </div>
+
+
+        <h2>Todays 3 Focus Artifacts</h2>
+        <ul id="focus-list">
+          <!-- List items will be added here -->
+        </ul>
+        <div>
+          <input id="focus-input" type="text" placeholder="Add focus">
+          <button id="focus-complete"> Not Started </button>
+        </div>
+        <h2>Next Planned Activities</h2>
+
         <ul id="activity-list">
           <!-- List items will be added here -->
         </ul>
@@ -87,7 +100,6 @@
       </div>
     </div>
   <!-- Scripts -->
-  <script src="./scripts/progressBar.js"></script>
   <script src="./scripts/navigation.js"></script>
   <script src="./scripts/dateTime.js"></script>
   <!-- <script src="./scripts/toDoList.js"></script> -->
