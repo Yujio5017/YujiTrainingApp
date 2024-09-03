@@ -17,8 +17,8 @@ observer.observe(focusList, { childList: true });
 // 
 function updateFocusCount() {
   let focusCount = focusItems.length;
-  // Hide the input field if the count reaches 3
-  if (focusCount >= 3) {
+  // Hide the input field if the count reaches 4
+  if (focusCount >= 4) {
     focusInput.style.display = 'none';
     focusComplete.style.backgroundColor = 'rgb(37, 182, 32)'
     focusComplete.textContent = 'Complete';
@@ -26,7 +26,7 @@ function updateFocusCount() {
   } else {
     focusInput.style.display = 'inline-block';
     focusComplete.style.color = (focusCount==0) ? '#818181' : 'black'
-    focusComplete.textContent = `In Progress ${focusCount}/3`;
+    focusComplete.textContent = `In Progress ${focusCount}/4`;
     focusComplete.style.backgroundColor = (focusCount==0) ? '#f0f0f0':'yellow';
   }
 }
@@ -61,6 +61,7 @@ function addFocus(){
     listItem.textContent = newFocus;
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = 'Delete';
+    deleteBtn.className = 'delete-button';
     deleteBtn.addEventListener('click', () => {
       listItem.remove();
     });
