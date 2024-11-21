@@ -38,8 +38,8 @@ const createWindow = () => {
       symbolColor: '#FFE4C8',
       height: 40
     },
-    width: 620,
-    height: 1001,
+    width: 420,
+    height: 801,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       nodeIntegration:true,
@@ -52,7 +52,7 @@ const createWindow = () => {
   mainWindow.loadFile(path.join(__dirname, startUrl));
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 };
 
 // This method will be called when Electron has finished

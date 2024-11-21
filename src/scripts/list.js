@@ -18,16 +18,16 @@ observer.observe(focusList, { childList: true });
 function updateFocusCount() {
   let focusCount = focusItems.length;
   // Hide the input field if the count reaches 4
-  if (focusCount >= 4) {
+  if (focusCount >= 3) {
     focusInput.style.display = 'none';
-    focusComplete.style.backgroundColor = 'rgb(37, 182, 32)'
-    focusComplete.textContent = 'Complete';
+    focusComplete.style.backgroundColor = '#F15822'
+    focusComplete.textContent = 'Completed';
   
   } else {
     focusInput.style.display = 'inline-block';
     focusComplete.style.color = (focusCount==0) ? '#818181' : 'black'
-    focusComplete.textContent = `In Progress ${focusCount}/4`;
-    focusComplete.style.backgroundColor = (focusCount==0) ? '#f0f0f0':'yellow';
+    focusComplete.textContent = `In Progress ${focusCount}/3`;
+    focusComplete.style.backgroundColor = (focusCount==0) ? '#869AAC':'#869AAC';
   }
 }
 
@@ -59,8 +59,11 @@ function addFocus(){
   if (newFocus) {
     const listItem = document.createElement('li');
     listItem.textContent = newFocus;
-    const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = 'Delete';
+    const deleteBtn = document.createElement('div');
+    const al = document.getElementById('focus-list');
+    const al_length = al.children.length;
+    deleteBtn.id = "focus-delete";
+    deleteBtn.textContent = `. ${al_length+1}x`;
     deleteBtn.className = 'delete-button';
     deleteBtn.addEventListener('click', () => {
       listItem.remove();
@@ -83,8 +86,11 @@ function addActivity(){
     const timeItem = document.createElement('p');
     timeItem.id = 'activity-time';
     timeItem.textContent = getTimePrediction();
-    const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = 'Delete';
+    const deleteBtn = document.createElement('div');
+    deleteBtn.id = "activity-delete";
+    const ul = document.getElementById('activity-list');
+    const ul_length = ul.children.length;
+    deleteBtn.textContent = `. ${ul_length+1}x`;
     deleteBtn.addEventListener('click', () => {
       listItem.remove();
     });

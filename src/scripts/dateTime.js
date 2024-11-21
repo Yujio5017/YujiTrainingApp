@@ -71,3 +71,61 @@ function updateDate() {
     updateTime();
   }, 1000);
   
+
+// Function to generate time slots
+function generateTimelines() {
+  const timelines = document.getElementById("timeline_s");
+  const timelinexl = document.getElementById("timeline_xl");
+  const startHour = 6; // Start at 6 AM
+  const endHour = 23; // End at 11 PM
+  const currentHour = new Date().getHours(); // Get current hour
+
+  // Clear existing content
+  timelines.innerHTML = "";
+  timelinexl.innerHTML = "";
+
+  for (let hour = startHour; hour <= endHour; hour++) {
+    // Create time slot for first timeline
+    const timeSlot1 = document.createElement("div");
+    timeSlot1.classList.add("time-slot");
+    timeSlot1.id = `timeline_s-hour-${hour}`;
+
+    if (hour === currentHour) {
+      const circle1 = document.createElement("div");
+      circle1.classList.add("circle");
+      timeSlot1.appendChild(circle1);
+    }
+
+    const timeText1 = document.createElement("span");
+    timeText1.classList.add("timetext");
+    timeText1.textContent = `${hour}:00`;
+    timeSlot1.appendChild(timeText1);
+    timelines.appendChild(timeSlot1);
+
+    // Create time slot for second timeline
+    const timeSlot2 = document.createElement("div");
+    timeSlot2.id = `timeline_xl-hour-${hour}`;
+    timeSlot2.classList.add("time-slot");
+
+    if (hour === currentHour) {
+      const circle2 = document.createElement("div");
+      circle2.classList.add("circle");
+      timeSlot2.appendChild(circle2);
+    }
+
+    const timeText2 = document.createElement("span");
+    timeText2.classList.add("timetext");
+    timeText2.textContent = `${hour}:00`;
+    timeSlot2.appendChild(timeText2);
+    timelinexl.appendChild(timeSlot2);
+  }
+}
+
+// Initial call to generate timelines
+generateTimelines();
+
+// Set interval to update every hour
+setInterval(generateTimelines, 60 * 60 * 1000); // 1 hour = 60 minutes * 60 seconds * 1000 ms
+
+// Optional: Update immediately if the current minute is 0
+setTimeout(generateTimelines, (60 - new Date().getMinutes()) * 60 * 1000);
