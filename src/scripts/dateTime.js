@@ -77,8 +77,8 @@ function generateTimelines() {
   const timelines = document.getElementById("timeline_s");
   const timelinexl = document.getElementById("timeline_xl");
   const startHour = 6; // Start at 6 AM
-  const endHour = 24; // End at 11 PM
-  const currentHour = 1;
+  const endHour = 23; // End at 11 PM
+  const currentHour = new Date().getHours();
 
   // Clear existing content
   timelines.innerHTML = "";
