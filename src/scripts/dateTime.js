@@ -144,12 +144,15 @@ function generateActivity() {
     // }
     const timeItem = document.createElement('p');
     timeItem.id = 'activity-position';
-    timeItem.textContent=`${hour+1} | `;
+    timeItem.textContent=`${hour+1} |` + "\u00A0";
     const timeText1 = document.createElement("p");
     timeText1.classList.add("activity-text");
     timeText1.textContent = `${al.children[hour].querySelector('#activity-name').textContent}`;
+    const timeText2 = document.createElement("p");
+    timeText2.classList.add("activity-completed-text");
     timeSlot1.appendChild(timeItem);
     timeSlot1.appendChild(timeText1);
+    timeSlot1.appendChild(timeText2);
     activityxl.appendChild(timeSlot1);
   }
 }

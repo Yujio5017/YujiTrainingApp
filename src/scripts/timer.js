@@ -162,6 +162,28 @@ function setPomodoroText(){
     setTitle.textContent = ListItem;
     setActivityNumber.textContent = displaySet;
     setEncouragement.textContent= encouragementList[randomIndex];
+    
+    //Displayset
+    const al = document.getElementById('activity_xl');
+    const activityLength = al.children.length; // End at length
+    
+    for (let hour = 0; hour < activityLength; hour++) {
+      const selector2 = al.children[hour].querySelector('.activity-completed-text');
+      selector2.textContent = " ";
+      if (hour < displaySet - 1) {
+        const selector = al.children[hour].querySelector('.activity-text');
+        selector.style.color = '#24275C'; // Set blue for completed set
+        const selector2 = al.children[hour].querySelector('.activity-completed-text');
+        selector2.textContent = "\u00A0 Completed!";
+        selector2.style.color = '#24275C'; // Set blue for completed set=
+      } else if (hour === displaySet - 1) {
+        al.children[hour].querySelector('.activity-text').style.color = '#F15822'; // Set orange for active set
+      } else {
+        al.children[hour].querySelector('.activity-text').style.color = 'black'; // Set black for inactive sets
+      }
+    }
+
+
   } else{
     backgroundBar.setAttribute('stroke', 'orange');
     setTitle.textContent = "BREAK";
@@ -186,6 +208,14 @@ function resetTimer() {
   progressBar.style.strokeDashoffset = progressBar.getAttribute('stroke-dasharray');
   playPauseIcon.src = './database/play.svg'; // Reset to play icon
   isPlaying = false; // Reset play/pause state
+  const al = document.getElementById('activity_xl');
+    const activityLength = al.children.length; // End at length
+  for (let hour = 0; hour < activityLength; hour++) {
+    const selector = al.children[hour].querySelector('.activity-text');
+    selector.style.color = 'black'; // Set blue for completed set
+    const selector2 = al.children[hour].querySelector('.activity-completed-text');
+      selector2.textContent = " ";
+  }
 }
 
 
