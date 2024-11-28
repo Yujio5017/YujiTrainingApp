@@ -309,6 +309,38 @@ ul.parent li{
   font-size: 48px;
 }
 
+#activity_xl{
+  min-height: 100px;
+  width: 300px;
+  font-family: inherit;
+  font-size: 17px;
+}
+
+#activity-xl > li{
+  text-align: right;
+  display: ruby-text;
+}
+
+#leftAlign{
+  justify-content: flex-end;
+}
+
+.activity-slot {
+  display: flex;
+  flex-direction: row;
+}
+
+#activity-number{
+  color: var(--Primary-Navy);
+}
+
+#encouragement{
+  color: var(--Primary-Navy);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
 #activity-list, #focus-list{
   min-height: 100px;
   width: 300px;

@@ -77,8 +77,8 @@ function generateTimelines() {
   const timelines = document.getElementById("timeline_s");
   const timelinexl = document.getElementById("timeline_xl");
   const startHour = 6; // Start at 6 AM
-  const endHour = 23; // End at 11 PM
-  const currentHour = new Date().getHours(); // Get current hour
+  const endHour = 24; // End at 11 PM
+  const currentHour = 1;
 
   // Clear existing content
   timelines.innerHTML = "";
@@ -97,7 +97,7 @@ function generateTimelines() {
     }
 
     const timeText1 = document.createElement("span");
-    timeText1.classList.add("timetext");
+    timeText1.classList.add("timeline-text");
     timeText1.textContent = `${hour}:00`;
     timeSlot1.appendChild(timeText1);
     timelines.appendChild(timeSlot1);
@@ -121,8 +121,42 @@ function generateTimelines() {
   }
 }
 
+
+function generateActivity() {
+  const activityxl = document.getElementById("activity_xl");
+  const startActivity = 0; // Start at 6 AM
+  const al = document.getElementById('activity-list');
+  const activitylength = al.children.length; // End at length
+
+  // Clear existing content
+  activityxl.innerHTML = "";
+
+  for (let hour = startActivity; hour < activitylength; hour++) {
+    // Create time slot for first timeline
+    const timeSlot1 = document.createElement("div");
+    timeSlot1.classList.add("activity-slot");
+    timeSlot1.id = `activity-${hour+1}`;
+
+    // if (hour === currentHour) {
+    //   const circle1 = document.createElement("div");
+    //   circle1.classList.add("circle");
+    //   timeSlot1.appendChild(circle1);
+    // }
+    const timeItem = document.createElement('p');
+    timeItem.id = 'activity-position';
+    timeItem.textContent=`${hour+1} | `;
+    const timeText1 = document.createElement("p");
+    timeText1.classList.add("activity-text");
+    timeText1.textContent = `${al.children[hour].querySelector('#activity-name').textContent}`;
+    timeSlot1.appendChild(timeItem);
+    timeSlot1.appendChild(timeText1);
+    activityxl.appendChild(timeSlot1);
+  }
+}
 // Initial call to generate timelines
 generateTimelines();
+
+generateActivity();
 
 // Set interval to update every hour
 setInterval(generateTimelines, 60 * 60 * 1000); // 1 hour = 60 minutes * 60 seconds * 1000 ms

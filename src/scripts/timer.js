@@ -21,8 +21,11 @@ const backgroundBar = document.getElementById('backgroundCircle');
 const startButton = document.getElementById('startButton');
 const resetButton = document.getElementById('resetButton');
 const setTitle = document.getElementById('setTitle');
+const setActivityNumber = document.getElementById('activity-number');
+const setEncouragement = document.getElementById('encouragement');
 const playPauseIcon = document.getElementById('playPauseIcon');
-
+const encouragementList= ["You've got this!", "Believe in yourself.", "Stay strong, stay focused.", "Keep pushing forward.", "You're doing great!", "Don't give up.", "Every step counts.", "Stay positive, stay motivated.", "You're almost there!", "Keep shining!"]
+let randomIndex = Math.floor(Math.random() * encouragementList.length);
 // Initialize the progress circle
 progressBar.style.strokeDashoffset = progressBar.getAttribute('stroke-dasharray');
 
@@ -157,9 +160,12 @@ function setPomodoroText(){
     const listItems = activityList.children;
     const ListItem = listItems.item(displaySet-1) ? `Set ${displaySet} - ${listItems.item(displaySet-1).querySelector('#activity-name').textContent}` : `Set ${displaySet}`;
     setTitle.textContent = ListItem;
+    setActivityNumber.textContent = displaySet;
+    setEncouragement.textContent= encouragementList[randomIndex];
   } else{
     backgroundBar.setAttribute('stroke', 'orange');
     setTitle.textContent = "BREAK";
+    randomIndex = Math.floor(Math.random() * encouragementList.length);
   }
 }
 
@@ -174,6 +180,8 @@ function resetTimer() {
   timeLeft = totalTime;
   setCounter=set; 
   setTitle.textContent=`Set ${set.toString()}`;
+  setActivityNumber.textContent = '';
+  setEncouragement.textContent= 'Start an Activity';
   resetTimerHeader();
   progressBar.style.strokeDashoffset = progressBar.getAttribute('stroke-dasharray');
   playPauseIcon.src = './database/play.svg'; // Reset to play icon
@@ -196,6 +204,8 @@ function resetTimerHeader() {
 // Skip the Timer
 function skipTimer(){
   timeLeft=0;
+  randomIndex = Math.floor(Math.random() * encouragementList.length);
+
 }
 // nowTime + remainingtime + orderedtime
 function updateActivityList(){

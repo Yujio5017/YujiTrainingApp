@@ -67,6 +67,7 @@ function addFocus(){
     deleteBtn.className = 'delete-button';
     deleteBtn.addEventListener('click', () => {
       listItem.remove();
+      updateFocus();
     });
     listItem.appendChild(deleteBtn);
     focusList.appendChild(listItem);
@@ -74,6 +75,21 @@ function addFocus(){
   }
 }
 
+function updateFocus(){
+  const al = document.getElementById('focus-list');
+  const activitylength = al.children.length; // End at 11 PM
+  for (let pointer = 0; pointer < activitylength; pointer++) {
+    al.children[pointer].querySelector('#focus-delete').textContent=`. ${pointer+1}x`;
+  }
+}
+
+function updateActivity(){
+  const al = document.getElementById('activity-list');
+  const activitylength = al.children.length; // End at 11 PM
+  for (let pointer = 0; pointer < activitylength; pointer++) {
+    al.children[pointer].querySelector('#activity-delete').textContent=`. ${pointer+1}x`;
+  }
+}
 
 // Function Add Activity
 function addActivity(){
@@ -93,6 +109,8 @@ function addActivity(){
     deleteBtn.textContent = `. ${ul_length+1}x`;
     deleteBtn.addEventListener('click', () => {
       listItem.remove();
+      generateActivity();
+      updateActivity();
     });
     // listItem.appendChild(timeItem);
     listItem.appendChild(textItem);
@@ -100,6 +118,7 @@ function addActivity(){
     activityList.appendChild(listItem);
     activityInput.value = '';
   }
+  generateActivity();
 }
 
 
