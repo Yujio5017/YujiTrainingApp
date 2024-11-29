@@ -5,13 +5,12 @@
     <title>Yuji Nojima Program</title>
     <link rel="stylesheet" href="index.css" />
     <link rel="stylesheet" href="https://use.typekit.net/ntn5tjm.css">
+    <link rel="stylesheet" href="https://fonts.adobe.com/fonts/fraunces-variable">
   </head>
+
   <body>
   <!-- Navigation Bar Draggable -->
   <div class="navbar" id="customTitleBar">
-    <div class="container">
-      <!-- Add your custom navigation elements here -->
-    </div>
   </div>
   <!-- Loading Bar -->
   <div class="ipl-progress-indicator" id="ipl-progress-indicator">
@@ -30,52 +29,118 @@
      <div class="container" id="main-container">
 
       <!-- Animation Container -->
-      <div class="video-container" id="video-container">
+      <!-- <div class="video-container" id="video-container">
         <video id="main-video" autoplay>
           <source src="../assets/videos/Splash.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
-      </div>
-      <div class="round-div lifestyle" onclick="goToPage('./pages/1-lifestyle.html')"><h1>LIFESTYLE</h1></div>
-      <div class="round-div workout" onclick="goToPage('./pages/2-workout.html')"><h1>WORKOUT</h1></div>
-    </div>
+      </div> -->
 
+      <div class="container_A">
+
+        <!-- Pomodoro Timer -->
+       <div class="container_B">
+          <div class="center">
+            <div class="circle-container" ></div>
+              <svg width="200" height="200">
+                <!-- Background circle (total progress) -->
+                <circle id ="backgroundCircle" cx="100" cy="100" r="80" stroke="#F15822" stroke-width="25" fill="transparent" />
+              
+                <!-- Progress circle (actual progress) -->
+                <circle id="progressCircle" cx="100" cy="100" r="80" stroke="#F8F3EA" stroke-width="25" fill="transparent"
+                        stroke-dasharray="502.4" stroke-dashoffset="502.4" transform="rotate(-90, 100, 100)" filter="url(#colorFilter)"/>
+              </svg>
+              <!-- Audio element with a the file -->
+              <audio id="myAudio" src="./database/ding.mp3" preload="auto"></audio>
+              </svg>
+            </div>
+            
+            <h1 class="timer">25:00</h1>
+            <p class="set" id ="setTitle">Set 1</p>
+            <div class="button-center">
+              <div class="reset-container" onclick="resetTimer()">
+                <img id="restIcon" src="./database/resetNEW.svg" alt="Play Button">
+              </div>
+              <div class="button-container" onclick="togglePlayPause()">
+                <img id="playPauseIcon" src="./database/play.svg" alt="Play Button">
+              </div>
+              <div class="reset-container" onclick="skipTimer()">
+                <img id="restIcon" src="./database/skip.svg" alt="Play Button">
+              </div>
+            </div>
+       </div>
+
+       <!-- Center div -->
+       <div class="container_C_XL">
+        <div class="align">
+
+          <!-- Time -->
+        <div class ="part-one">
+          <p class="title-project"> Today's Projects</p>
+          <div class="timeline" id="timeline_xl">
+            <!-- Time slots will be dynamically generated here -->
+          </div>
+        </div> 
+        <div class ="part-two"> 
+          <p id="date">Section 2</p>
+          <div class="seperator"></div>
+          
+          <div class="activity-list" id="activity_xl">
+        
+          </div>
+
+          </div>
+        </div>
+        </div>
+
+       <div class="container_C_S"> 
+        <p> Mini Schedule</p>
+          <div class="timeline" id="timeline_s">
+            <!-- Time slots will be dynamically generated here -->
+          </div>
+        </div>
+       <div class="container_D">
+        <div>
+          <p id="time"></p>
+          <p id="encouragement" id="leftAlign"></p>
+          <div class="activity-slot" id="leftAlign">
+            <p id="activity-title">Activity &nbsp</p><p id="activity-number">Start</p>
+          </div>
+     
+        </div>
+
+
+        <h2>Focus 1-3 Goals</h2>
+        <ul id="focus-list">
+          <!-- List items will be added here -->
+        </ul>
+        <div>
+          <input id="focus-input" type="text" placeholder="Add focus">
+          <button id="focus-complete"> Not Started </button>
+        </div>
+        <h2>Next Planned Activities</h2>
+
+        <ul id="activity-list" class="grid-list">
+          <!-- List items will be added here -->
+        </ul>
+        <input id="activity-input" type="text" placeholder="Add new activity">
+        <button id="add-activity-btn">Add</button>
+      </div>
+      </div>
+      </div>
+
+      </div>
+    </div>
+  <!-- Scripts -->
+  <script src="./scripts/navigation.js"></script>
+  <script src="./scripts/dateTime.js"></script>
+  <!-- <script src="./scripts/toDoList.js"></script> -->
+  <!-- <script src="./scripts/Projects.js"></script> -->
+  <script src="./scripts/timer.js"></script>
+  <script src="./scripts/list.js"></script>
 
     <!-- Scripts -->
-    <script>
-      const ele = document.getElementById('ipl-progress-indicator');
-      const videoContainer = document.getElementById('video-container');
-      const video = document.getElementById('main-video');
-      const mainContainer = document.getElementById('main-container');
-      function goToPage(page) {
-            // Navigate to the specified page
-            window.location.href = page;
-        }
-        // REMOVE
-        // videoContainer.remove();
-  // Pause the video to ensure it doesn't continue playing after removal
-  video.pause();
-      if (ele) {
-        // Set a timeout to remove the loading screen after 2 seconds
-        setTimeout(() => {
-          // Remove the loading screen from the DOM
-          ele.remove();
-          // Set a timeout to play the video after 1 second
-            // Listen for the 'ended' event on the video element
-            video.addEventListener('ended', () => {
-              // Remove the video element from the DOM after it has finished playing once
-              videoContainer.remove();
-              mainContainer.classList.add('dashboard');
-            });
-            // Play the video
-            video.play();
-        
 
-            //REMVOE
-        }, 2500); // Remove the loading screen after 2 seconds
-        // }, 100); // Remove the loading screen after 2 seconds
-      }
-    </script>
     <!-- <script src="./renderer.js"></script> -->
   </body>
 </html>

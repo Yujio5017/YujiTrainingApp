@@ -25,9 +25,9 @@ html, body {
 }
 
 body {
-  font-family: pragmatica, sans-serif;
+  font-family: bilo, sans-serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 800;
   background-color: var(--Background-Beige);
 }
 
@@ -75,7 +75,7 @@ h1.dare{
   text-align: center;
 }
 
-button {
+/* button {
   background-color: var(--Background-Paper);
   height: 50px;
   width: 180px;
@@ -85,6 +85,22 @@ button {
   font-weight: bold;
   font-size: 15px;
   text-align: center; /* Center text horizontally */
+/* } */
+ul {
+  list-style-type: none;
+  margin: none;
+  padding: 0;
+  margin: 0;
+}
+li{
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+}
+
+p{
+  padding: 0;
+  margin: 0;
 }
 
 .button-content {
@@ -99,13 +115,563 @@ button img {
 }
 
 .container {
-  position: relative;
   width: 100%;
   height: 100%;
+  padding: 30px 20px;
+
 }
 
 .dashboard{
   background-color: var(--Background-Paper);
+}
+
+
+/* /Navigation Bar Styles/ */
+.left-nav {
+  height: 100%;
+  width: var(--nav-bar-size); /* Occupy 20% of the width */
+  position: fixed; /* Fix the navbar at the top */
+  top: 0; /* Align at the top */
+  left: 0; /* Align at the left */
+  z-index: 2; /* Ensure the navbar is on top */
+  background-color: var(--nav-bar);
+  text-decoration: none;
+  text-align: center;
+  padding-top: 50px;
+}
+
+ul.parent li{
+  padding-top: 20px;
+}
+.container {
+  width: 100%;
+  height: 100%;
+  padding: 45px;
+  box-sizing: border-box; /* Ensure padding is included in width and height */
+  background-color: var(--Background-Beige);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Space between elements */
+}
+
+.container_A{
+  /* padding-top: 40px; */
+  width: 100%; /* Occupy 80% of the width */
+  height: auto; /* Adjust height based on content */
+  position: static; /* Position the content absolutely */
+  left: var(--nav-bar-size); /* Align at 20% from the left */
+  background-color: var(--Background-Beige);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+.container_B{
+  flex-basis: 33.33%;
+  width: 100%;
+  order: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.container_C_XL{
+  flex-basis: 33.33%;
+  width: 100%;
+  order: 2;
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Space between the parts */
+}
+.align{
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: center;
+}
+.part-one {
+  flex: 0 0 100px; /* Fixed width of 250px */
+}
+
+.part-two {
+  flex: 1; /* Take up remaining space */
+}
+
+.seperator{
+  width: 100%;
+  height: 7px;
+  background-color: var(--Primary-Dare-Orange);
+}
+
+
+.container_C_S{
+  flex-basis: 50%;
+  width: 100%;
+  order: 2;
+  font-size: 11px;
+  text-align: center;
+  flex-direction: column;
+  display: none;
+}
+
+.timeline-text{
+  z-index: 1;
+}
+.container_D{
+  flex-basis: 33.33%;
+  width: 100%;
+  order: 3;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  text-align: center;
+  flex-direction: column;
+}
+
+@media (max-width: 1200px) {
+  .container_B, .container_C_XL {
+    flex-basis: 50%;
+  }
+
+  .container_C_S, .container_D{
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .container_C_S {
+    display: flex;
+  }
+  .container_C_XL, .container_D{
+    display: none;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .container_B,.container_D {
+    flex-basis: 100%;
+    flex-direction: column;
+  }
+  .container_C_XL, .container_C_S, .container_D{
+    display: none;
+  }
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+
+.time-slot {
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+  position: relative;
+}
+
+.circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 3px solid var(--Primary-Dare-Orange);
+  position: absolute;
+  z-index: 1;
+  right: 1px;
+}
+
+.circle-small{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 3px solid var(--Primary-Dare-Orange);
+  position: absolute;
+  z-index: 1;
+  right: 6px;
+}
+
+.timetext {
+  font-size: 8px;
+  font-weight: bold;
+  margin-left: 10px;
+  z-index: 4;
+}
+
+
+#time{
+  color: var(--Primary-Dare-Orange);
+  font-size: 40px;
+  margin: 0px;
+
+}
+#setTitle{
+  padding: 10px;
+}
+
+.timer{
+  text-align: center;
+  font-size: 48px;
+}
+
+#activity_xl{
+  min-height: 100px;
+  width: 300px;
+  font-family: inherit;
+  font-size: 17px;
+}
+
+#activity-xl > li{
+  text-align: right;
+  display: ruby-text;
+}
+
+#leftAlign{
+  justify-content: flex-end;
+}
+
+.activity-slot {
+  display: flex;
+  flex-direction: row;
+}
+
+#activity-number{
+  color: var(--Primary-Navy);
+}
+
+#encouragement{
+  color: var(--Primary-Navy);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+#activity-list,#focus-list{
+  min-height: 100px;
+  font-family: inherit;
+  font-size: 17px;
+}
+
+#activity-list > li > div, #focus-list > li, .activity-content{
+  text-align: right;
+  display: ruby-text;
+}
+
+#activity-list > li > div > button, #focus-list > li > div > button{
+  margin-left: 57px;
+}
+
+.grid-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns of equal width */
+  gap: 10px; /* Optional, for spacing */
+  grid-auto-flow: column; /* Fill columns one by one, rather than the default row-wise */
+}
+
+.grid-list li:nth-child(-n+7) {
+  grid-column: 2; /* First 7 items go into the right column */
+}
+
+.grid-list li:nth-child(n+8) {
+  grid-column: 1; /* Items 8 and onwards go into the left column */
+}
+
+
+#focus-delete{
+  color: var(--Primary-Dare-Orange);
+  cursor: pointer;
+  font-size: 18px;
+}
+
+#activity-delete{
+  color: var(--Primary-Sky-Blue);
+  cursor: pointer;
+
+}
+
+#activity-input, #focus-input {
+  margin-top: 10px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.title-project{
+  font-size: 11px;
+}
+
+#focus-complete{
+  margin-top: 10px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  color: #818181;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  /* display: none; */
+}
+
+#add-activity-btn{
+  margin-top: 10px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  color: #818181;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  /* display: none; */
+}
+
+
+.set{
+  text-align: center;
+  font-size: 20px;
+}
+
+.button-center{
+  display: flex;
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+}
+.reset-container {
+  display: inline-block;
+  border-radius: 50%;
+  width: 46px; /* Adjust size as needed */
+  height: 46px; /* Adjust size as needed */
+  background-color: var(--Background-Paper); /* Background color of the button */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
+  text-align: center;
+  line-height: 46px; /* Aligns SVG vertically */
+  cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+}
+
+.reset-container:hover, .button-container:hover {
+  transition: fill 0.3s ease; /* Smooth transition for fill property */
+  background-color: #f7b490; /* Background color of the button */
+}
+
+
+.button-container {
+  display: inline-block;
+  border-radius: 50%;
+  width: 56px; /* Adjust size as needed */
+  height: 56px; /* Adjust size as needed */
+  background-color: var(--Background-Paper); /* Background color of the button */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
+  text-align: center;
+  line-height: 56px; /* Aligns SVG vertically */
+  cursor: pointer; /* Change cursor to pointer to indicate it's clickable */
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.reset-container img {
+  width: 28px; /* Adjust size as needed */
+  height: 28px; /* Adjust size as needed */
+  vertical-align: middle;
+}
+.button-container img {
+  width: 28px; /* Adjust size as needed */
+  height: 28px; /* Adjust size as needed */
+  vertical-align: middle;
+}
+
+#progressCircle {
+  stroke-dasharray: 502.4; /* Adjust based on your actual path length */
+  transition: stroke-dashoffset 0.4s ease, stroke 0.1s ease; /* Smooth transitions for dash offset and stroke color */
+}
+.focus{
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.green {
+  stroke: rgb(88, 224, 241) !important;
+}
+
+.icon {
+  fill: var(--Secondary-Jeruk-Orange); /* Default color */
+  transition: fill 0.3s ease; /* Smooth transition for fill property */
+}
+
+.icon:hover {
+  fill: var(--Primary-Dare-Orange); /* Example: Change to red on hover */
+}
+
+/* /Main Content Styles/ */
+.content {
+  height: 100%;
+  width: 100%;
+  /* border-radius: 10px; */
+  background-color: var(--Background-Paper);
+  z-index: 1; /* Ensure the content is behind the navbar */
+  display: grid;
+  grid-template-columns: 25% 25% 25% 12.5% 12.5%;
+  grid-template-rows: 25% 37.5% 37.5%;
+  grid-template-areas: 
+    "time today current-task stats stats"
+    "to-do today current-task journal gym"
+    "edu today current-task blog blog"
+}
+
+
+.content-child{
+  border: 2px solid var(--Tertiary-Elegance-System);
+  padding: 20px;
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 30px;
+}
+
+.content-child.time-capsule{
+  justify-content: flex-end; /* Align items to the bottom */
+}
+.content-child.logo-progress{
+  justify-content: flex-end; /* Align items to the bottom */
+}
+
+.content-child h3{
+  margin: 0px;
+  padding: 0px;
+  font-size: 25px;
+}
+
+.time-capsule{
+  grid-area: time;
+  border: 2px solid var(--Primary-Sky-Blue);
+}
+
+.progress-bar2 {
+  width: 100%;
+  height: 20px;
+  border-radius: 15px;
+  background-color: var(--Background-Beige);
+}
+
+.progress2 {
+  height: 100%;
+  background-color: var(--Primary-Dare-Orange);
+  border-radius: 15px;
+  width: 0%;
+  animation: progressDelay 4s linear 0s 1 normal forwards, progressAnimation2 15h linear forwards;
+}
+
+@keyframes progressAnimation2 {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+.logo-progress {
+  grid-area: logo-progress;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 30px;
+  border-radius: 15px;
+  background-color: var(--Background-Beige);
+}
+
+.progress {
+  height: 100%;
+  background-color: var(--Primary-Dare-Orange);
+  border-radius: 15px;
+  width: 30%;
+  animation: progressDelay 4s linear 0s 1 normal forwards, progressAnimation 3s ease-out 10s 1 normal forwards;
+}
+
+@keyframes progressDelay {
+  0% { width: 0%; }
+  100% { width: 0%; }
+}
+
+@keyframes progressAnimation {
+  from { width: 0%; }
+  to { width: 30%; }
+}
+
+.right-pallete{
+  background-color: var(--Background-Beige);
+  color: var(--Primary-Dare-Orange);
+  font-family: fraunces-variable, sans-serif;
+  font-style: normal;
+  font-variation-settings: "SOFT" 0, "WONK" 1, "opsz" 9, "wght" 900;  
+}
+
+.right-pallete p{
+  color: var(--Primary-Brown);
+  font-size: 25px;
+}
+
+.left-pallete{
+  background-color: var(--Background-Paper);
+  color: var(--Primary-Navy);
+  font-weight: 800;
+}
+
+.current-task{
+  grid-area: current-task;
+}
+.today{
+  grid-area: today;
+}
+.blog{
+  grid-area: blog;
+}
+
+.edu{
+  grid-area: edu;
+}
+.to-do{
+  grid-area: to-do;
+
+}
+.gym{
+  grid-area: gym;
+}
+
+.journal{
+  grid-area: journal;
+}
+
+.stats{
+  grid-area: stats;
+}
+
+
+.time {
+  font-family: bilo, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 60px; /* Adjust the font size as needed */
+  color: var(--Primary-Navy);
+
+}
+.date{
+  color: var(--Secondary-Grey-Blue);
+  font-size: 30px; /* Adjust the font size as needed */
+}
+
+/* video? */
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3; /* Set a higher z-index to ensure it's on top of other content */
+}
+
+
+#main-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the video covers the whole container */
 }
 
 
@@ -130,22 +696,97 @@ button img {
   border: 6px solid var(--Secondary-Grey-Blue); /* Border with color black (#000) */
   color: var(--Primary-Navy);
 }
-/* video? */
-.video-container {
-  position: absolute;
-  top: 0;
-  left: 0;
+.todo-container {
   width: 100%;
-  height: 100%;
+  margin: 0 auto;
+  border-radius: 15px;
+  margin: 10px;
+  background-color: var(--Tertiary-Timeless-System);
+  max-height: 100%;
+  min-height: 100%;
+}
+
+.todo-item {
+  margin-bottom: 10px;
+  position: relative; /* Ensure relative positioning */
+  font-size: 15px;
+  padding: 10px;
+  /* border: 1px solid #ccc; */
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: var(--Secondary-Grey-Blue);
+  color: var(--Primary-Navy);
+
+}
+.todo-item:nth-child(-n+3) {
+  /* Your styles here */
+  background-color: var(--Secondary-Jeruk-Orange);
+}
+.todo-item.completed {
+  text-decoration: line-through;
+  background-color: var(--Primary-Navy);
+  color: var(--Primary-Sky-Blue);
 }
 
 
-#main-video {
+.todo-item .delete-button {
+  position: absolute; /* Absolute positioning for the delete button */
+  top: 50%; /* Position the button in the middle vertically */
+  right: 5px; /* 5px from the right edge */
+  transform: translateY(-50%); /* Center the button vertically */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+}
+.todo-container2 {
   width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensure the video covers the whole container */
+  margin: 0 auto;
+  border-radius: 15px;
+  margin: 10px;
+  background-color: var(--Tertiary-Timeless-System);
+  max-height: 100%;
+  min-height: 100%;
 }
 
+.todo-item2 {
+  margin-bottom: 10px;
+  position: relative; /* Ensure relative positioning */
+  font-size: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: var(--Secondary-Grey-Blue);
+  color: var(--Primary-Navy);
+
+}
+
+.todo-item2.completed {
+  text-decoration: line-through;
+  background-color: var(--Primary-Navy);
+  color: var(--Primary-Sky-Blue);
+}
+
+.todo-input2 {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.todo-item2 .delete-button2 {
+  position: absolute; /* Absolute positioning for the delete button */
+  top: 50%; /* Position the button in the middle vertically */
+  right: 5px; /* 5px from the right edge */
+  transform: translateY(-50%); /* Center the button vertically */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+}
 /* /Loading Tracker/ */
 .ipl-progress-indicator.available{opacity:0}
 .ipl-progress-indicator{background-color:var(--backdropload);width:100%;height:100%;position:fixed;opacity:1;pointer-events:none;-webkit-transition:opacity cubic-bezier(.4,0,.2,1) 436ms;-moz-transition:opacity cubic-bezier(.4,0,.2,1) 436ms;transition:opacity cubic-bezier(.4,0,.2,1) 436ms;z-index:9999}
