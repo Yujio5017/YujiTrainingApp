@@ -1,6 +1,9 @@
+require('dotenv').config();
+const { electronUpdaterConfig } = require('../forge.config.js');
 const { app, BrowserWindow, ipcMain} = require('electron');
 const path = require('node:path');
 const fs = require('fs');
+
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
   app.quit();
@@ -55,25 +58,6 @@ const createWindow = () => {
   // mainWindow.webContents.openDevTools();
 };
 
-
-
-// const fetchGitHubData = () => {
-//   const axios = require('axios');
-//   axios.get('https://api.github.com/repos/USERNAME/REPO/contents/PATH/TO/FILE', 
-//     { 
-//       headers: {
-//         'Authorization': 'Bearer YOUR_GITHUB_TOKEN',
-//         'Accept': 'application/vnd.github.v3+json'
-//       }
-//     }
-//   )
-//  .then(response => {
-//     const decodedContent = Buffer.from(response.data.content, 'base64').toString('utf-8');
-//     console.log('GitHub Data:', decodedContent);
-//     // Update app state or config here
-//   })
-//  .catch(error => console.error('GitHub API Error:', error));
-// };
 
 
 

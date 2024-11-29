@@ -41,4 +41,12 @@ module.exports = {
       [FuseV1Options.OnlyLoadAppFromAsar]: true,
     }),
   ],
+  electronUpdaterConfig: {
+    provider: 'github',
+    owner: 'Yujio5017',
+    repo: 'YujiTrainingApp',
+    token:process.env.GITHUB_TOKEN,
+    releaseType: 'github',
+    draft: false, // Set to false for production
+  },
 };
