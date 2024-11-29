@@ -92,7 +92,7 @@ function generateTimelines() {
 
     if (hour === currentHour) {
       const circle1 = document.createElement("div");
-      circle1.classList.add("circle");
+      circle1.classList.add("circle-small");
       timeSlot1.appendChild(circle1);
     }
 
@@ -108,6 +108,7 @@ function generateTimelines() {
     timeSlot2.classList.add("time-slot");
 
     if (hour === currentHour) {
+      console.log("safe");
       const circle2 = document.createElement("div");
       circle2.classList.add("circle");
       timeSlot2.appendChild(circle2);
@@ -122,6 +123,7 @@ function generateTimelines() {
 }
 
 
+
 function generateActivity() {
   const activityxl = document.getElementById("activity_xl");
   const startActivity = 0; // Start at 6 AM
@@ -130,18 +132,12 @@ function generateActivity() {
 
   // Clear existing content
   activityxl.innerHTML = "";
-
+  const setActivityNumber = document.getElementById('activity-number');
   for (let hour = startActivity; hour < activitylength; hour++) {
     // Create time slot for first timeline
     const timeSlot1 = document.createElement("div");
     timeSlot1.classList.add("activity-slot");
     timeSlot1.id = `activity-${hour+1}`;
-
-    // if (hour === currentHour) {
-    //   const circle1 = document.createElement("div");
-    //   circle1.classList.add("circle");
-    //   timeSlot1.appendChild(circle1);
-    // }
     const timeItem = document.createElement('p');
     timeItem.id = 'activity-position';
     timeItem.textContent=`${hour+1} |` + "\u00A0";
@@ -150,12 +146,40 @@ function generateActivity() {
     timeText1.textContent = `${al.children[hour].querySelector('#activity-name').textContent}`;
     const timeText2 = document.createElement("p");
     timeText2.classList.add("activity-completed-text");
+    const setTitle = document.getElementById('setTitle');
+    colorActivity(hour,displaySet,timeText1,timeText2,setTitle.textContent);
     timeSlot1.appendChild(timeItem);
     timeSlot1.appendChild(timeText1);
     timeSlot1.appendChild(timeText2);
     activityxl.appendChild(timeSlot1);
   }
 }
+
+
+
+function colorActivity(hourV,displaySetV,text1,text2,breakV) {
+  if (hourV < displaySetV - 1) {
+      // Completed sets
+      text1.style.color = '#24275C'; 
+      text2.textContent = "\u00A0 Completed!";
+      text2.style.color = '#24275C'; 
+    } else if (hourV === displaySetV - 1) {
+      // Current set (if not a break)
+      if (breakV==="BREAK"){
+        text1.style.color = '#24275C'; 
+        text2.textContent = "\u00A0 Completed!";
+        text2.style.color = '#24275C'; 
+      } else{
+        text1.style.color = '#F15822'; 
+        text2.textContent = " "; // Clear completed text
+      }
+    } else {
+      // Future sets
+      text1.style.color = 'black'; 
+      text2.textContent = " "; // Clear completed text
+    }
+}
+
 // Initial call to generate timelines
 generateTimelines();
 

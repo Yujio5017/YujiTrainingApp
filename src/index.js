@@ -52,8 +52,30 @@ const createWindow = () => {
   mainWindow.loadFile(path.join(__dirname, startUrl));
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 };
+
+
+
+// const fetchGitHubData = () => {
+//   const axios = require('axios');
+//   axios.get('https://api.github.com/repos/USERNAME/REPO/contents/PATH/TO/FILE', 
+//     { 
+//       headers: {
+//         'Authorization': 'Bearer YOUR_GITHUB_TOKEN',
+//         'Accept': 'application/vnd.github.v3+json'
+//       }
+//     }
+//   )
+//  .then(response => {
+//     const decodedContent = Buffer.from(response.data.content, 'base64').toString('utf-8');
+//     console.log('GitHub Data:', decodedContent);
+//     // Update app state or config here
+//   })
+//  .catch(error => console.error('GitHub API Error:', error));
+// };
+
+
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.

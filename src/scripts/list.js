@@ -8,13 +8,16 @@ const focusInput = document.getElementById('focus-input');
 const focusComplete = document.getElementById('focus-complete');
 
 
+
 let focusItems = focusList.children;
 let activityItems = activityList.children;
 
 const observer = new MutationObserver(updateFocusCount);
 observer.observe(focusList, { childList: true });
 
-// 
+const observer2 = new MutationObserver(updateActivityCount)
+observer2.observe(activityList, { childList: true });
+
 function updateFocusCount() {
   let focusCount = focusItems.length;
   // Hide the input field if the count reaches 4
@@ -25,11 +28,28 @@ function updateFocusCount() {
   
   } else {
     focusInput.style.display = 'inline-block';
-    focusComplete.style.color = (focusCount==0) ? '#818181' : 'black'
+    focusComplete.style.color = (focusCount===0) ? 'black' : 'black';
     focusComplete.textContent = `In Progress ${focusCount}/3`;
-    focusComplete.style.backgroundColor = (focusCount==0) ? '#869AAC':'#869AAC';
+    focusComplete.style.backgroundColor = (focusCount===0) ? '#4CAF50;':'#869AAC';
   }
 }
+
+function updateActivityCount() {
+  let activityCount = activityItems.length;
+  // Hide the input field if the count reaches 4 
+  if (activityCount >= 14) {
+    activityInput.style.display = 'none';
+    addActivityBtn.style.backgroundColor = '#869AAC';
+    addActivityBtn.textContent = 'Full! 14/14';
+  
+  } else {
+    activityInput.style.display = 'inline-block';
+    addActivityBtn.style.color = (activityCount===0) ? 'black' : 'black'
+    addActivityBtn.textContent = `Add Activity`;
+    addActivityBtn.style.backgroundColor = (activityCount===0) ? '#4CAF50;':'#F15822';
+  }
+}
+
 
 // On button 'ENTER'
 focusInput.addEventListener("keypress", function(event) {
@@ -96,6 +116,8 @@ function addActivity(){
   const newActivity = activityInput.value.trim();
   if (newActivity) {
     const listItem = document.createElement('li');
+    const div1 = document.createElement('div');
+    div1.className = 'activity-content';
     const textItem = document.createElement('p');
     textItem.id = 'activity-name';
     textItem.textContent = newActivity;
@@ -113,8 +135,9 @@ function addActivity(){
       updateActivity();
     });
     // listItem.appendChild(timeItem);
-    listItem.appendChild(textItem);
-    listItem.appendChild(deleteBtn);
+    div1.appendChild(textItem);
+    div1.appendChild(deleteBtn);
+    listItem.appendChild(div1);
     activityList.appendChild(listItem);
     activityInput.value = '';
   }

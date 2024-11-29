@@ -103,6 +103,9 @@ function startTimer() {
     started = true;
   }
 }
+let displaySet = INITIAL_SET;
+let resetHit = false;
+
 
 function updateTimer() {
   timeLeft--;
@@ -129,8 +132,16 @@ function updateTimer() {
 
   // Set the text
   setPomodoroText();
+  if (resetHit === false && timeLeft <= 0){
+    singleReset();
+  }
+  if (resetHit === true){
+    resetHit=false;
+  }
+  
+}
 
-  if (timeLeft <= 0) {
+function singleReset(){
     // Reset Timer and Header and Circle
     clearInterval(timerInterval);
     setCounter += 1;
@@ -146,48 +157,49 @@ function updateTimer() {
     totalBothTime = totalAllTime;
     timerInterval = setInterval(updateTimer, 1000); // Update timer every second (1000 ms)
 
+    if (setCounter % 2!= 0) { // Work interval just ended
+      displaySet++;
+    }
     // Play Dings
     playAudio();
-  }
 }
 
-// Function to set Text and color
+
+/// Function to set Text and color
 function setPomodoroText(){
-  if (setCounter == 1 || setCounter % 2 != 0) {
+  if (setCounter == 1 || setCounter % 2!= 0) {
+    const setTitle = document.getElementById('setTitle');
     backgroundBar.setAttribute('stroke', '#F15822');
-    const displaySet = setCounter == 1 ? setCounter : setCounter - 1;
     const activityList = document.getElementById('activity-list');
     const listItems = activityList.children;
-    const ListItem = listItems.item(displaySet-1) ? `Set ${displaySet} - ${listItems.item(displaySet-1).querySelector('#activity-name').textContent}` : `Set ${displaySet}`;
+    const ListItem = listItems.item(displaySet-1)? `Set ${displaySet} - ${listItems.item(displaySet-1).querySelector('#activity-name').textContent}` : `Set ${displaySet}`;
     setTitle.textContent = ListItem;
     setActivityNumber.textContent = displaySet;
-    setEncouragement.textContent= encouragementList[randomIndex];
+    setEncouragement.textContent = encouragementList[randomIndex];
     
-    //Displayset
+    // Color.activity-text elements based on completion status
     const al = document.getElementById('activity_xl');
-    const activityLength = al.children.length; // End at length
-    
+    const activityLength = al.children.length; 
     for (let hour = 0; hour < activityLength; hour++) {
+      const selector = al.children[hour].querySelector('.activity-text');
       const selector2 = al.children[hour].querySelector('.activity-completed-text');
-      selector2.textContent = " ";
-      if (hour < displaySet - 1) {
-        const selector = al.children[hour].querySelector('.activity-text');
-        selector.style.color = '#24275C'; // Set blue for completed set
-        const selector2 = al.children[hour].querySelector('.activity-completed-text');
-        selector2.textContent = "\u00A0 Completed!";
-        selector2.style.color = '#24275C'; // Set blue for completed set=
-      } else if (hour === displaySet - 1) {
-        al.children[hour].querySelector('.activity-text').style.color = '#F15822'; // Set orange for active set
-      } else {
-        al.children[hour].querySelector('.activity-text').style.color = 'black'; // Set black for inactive sets
-      }
+      colorActivity(hour,displaySet,selector,selector2,setTitle.textContent);
     }
-
-
-  } else{
+  } else {
     backgroundBar.setAttribute('stroke', 'orange');
-    setTitle.textContent = "BREAK";
+    const ListItem = `BREAK`;
+    setTitle.textContent = ListItem;
+    setActivityNumber.textContent = `${displaySet}`;
     randomIndex = Math.floor(Math.random() * encouragementList.length);
+    
+    // Color.activity-text elements based on completion status during breaks
+    const al = document.getElementById('activity_xl');
+    const activityLength = al.children.length; 
+    for (let hour = 0; hour < activityLength; hour++) {
+      const selector = al.children[hour].querySelector('.activity-text');
+      const selector2 = al.children[hour].querySelector('.activity-completed-text');
+      colorActivity(hour,displaySet,selector,selector2,setTitle.textContent);
+    }
   }
 }
 
@@ -216,6 +228,7 @@ function resetTimer() {
     const selector2 = al.children[hour].querySelector('.activity-completed-text');
       selector2.textContent = " ";
   }
+  displaySet=INITIAL_SET;
 }
 
 
@@ -235,7 +248,7 @@ function resetTimerHeader() {
 function skipTimer(){
   timeLeft=0;
   randomIndex = Math.floor(Math.random() * encouragementList.length);
-
+  singleReset();
 }
 // nowTime + remainingtime + orderedtime
 function updateActivityList(){
